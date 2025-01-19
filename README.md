@@ -13,3 +13,5 @@ the original CHANGELOG [here](Changelog-en.txt).
 ## 2025-02-02
 
  * Fix the count of the number of Soulshards in bags.
+ * Updated the cooldown of the Fel Domination spell from 15 min to 5 minutes
+    to reflect changes from Turtle WoW 1.17.2.
