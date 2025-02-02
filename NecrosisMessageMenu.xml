@@ -21,7 +21,7 @@
 							</Offset>
 						</Anchor>
 					</Anchors>
-				</FontString>	
+				</FontString>
 				<FontString name="NecrosisAntiFearAlert_Option" inherits="GameFontNormalSmall">
 					<Color r="1.0" g="1.0" b="1.0" a="1"/>
 					<Anchors>
@@ -159,7 +159,7 @@
 					</OnLeave>
 				</Scripts>
 			</Slider>
-			
+
 			<CheckButton name="NecrosisAntiFearAlert_Button" enableMouse="true" inherits="UICheckButtonTemplate" checked="false">
 				<Size>
 					<AbsDimension x="24" y="24"/>

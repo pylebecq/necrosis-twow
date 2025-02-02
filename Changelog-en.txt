@@ -18,7 +18,7 @@ who can speak more fluently than me to improve my pieces of writing...
 
 
 -------------------------------
-Changelog : 
+Changelog :
 -------------------------------
 
 1.5.2a TOC updated to match 1.12

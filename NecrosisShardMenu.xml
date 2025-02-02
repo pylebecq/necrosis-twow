@@ -181,7 +181,7 @@
 						</Offset>
 					</Anchor>
 				</Anchors>
-				<Scripts>	
+				<Scripts>
 					<OnEnter>
 						GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
 						if (this:GetValue() == 1) then

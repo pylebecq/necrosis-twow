@@ -1,13 +1,13 @@
 ------------------------------------------------------------------------------------------------------
 -- Necrosis LdC
 --
--- Créateur initial (US) : Infernal (http://www.revolvus.com/games/interface/necrosis/)
--- Implémentation de base (FR) : Tilienna Thorondor
+-- CrÃ©ateur initial (US) : Infernal (http://www.revolvus.com/games/interface/necrosis/)
+-- ImplÃ©mentation de base (FR) : Tilienna Thorondor
 -- Reprise du projet : Lomig & Nyx des Larmes de Cenarius, Kael'Thas
--- 
--- Skins et voix Françaises : Eliah, Ner'zhul
+--
+-- Skins et voix FranÃ§aises : Eliah, Ner'zhul
 -- Version Allemande par Arne Meier et Halisstra, Lothar
--- Remerciements spéciaux pour Sadyre (JoL)
+-- Remerciements spÃ©ciaux pour Sadyre (JoL)
 -- Version 06.05.2006-1
 ------------------------------------------------------------------------------------------------------
 
@@ -243,7 +243,7 @@ function Necrosis_Localization_Dialog_En()
 		["Turquoise"] = "Turquoise",
 		["X"] = "X"
 	};
-	
+
 	NECROSIS_CONFIGURATION = {
 		["Menu1"] = "Shard Settings",
 		["Menu2"] = "Message Settings",
@@ -263,7 +263,7 @@ function Necrosis_Localization_Dialog_En()
 		["TranseWarning"] = "Alert me when I enter a Trance State",
 		["SpellTime"] = "Turn on the spell durations indicator",
 		["AntiFearWarning"] = "Warn me when my target cannot be feared.",
-		["GraphicalTimer"] = "Show graphical instead text timers",	
+		["GraphicalTimer"] = "Show graphical instead text timers",
 		["TranceButtonView"] = "Let me see hidden buttons to drag them.",
 		["ButtonLock"] = "Lock the buttons around the Necrosis Sphere.",
 		["MainLock"] = "Lock buttons and the Necrosis Sphere.",

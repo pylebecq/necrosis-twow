@@ -1,13 +1,13 @@
 ------------------------------------------------------------------------------------------------------
 -- Necrosis LdC
 --
--- CrÈateur initial (US) : Infernal (http://www.revolvus.com/games/interface/necrosis/)
--- ImplÈmentation de base (FR) : Tilienna Thorondor
+-- Cr√©ateur initial (US) : Infernal (http://www.revolvus.com/games/interface/necrosis/)
+-- Impl√©mentation de base (FR) : Tilienna Thorondor
 -- Reprise du projet : Lomig & Nyx des Larmes de Cenarius, Kael'Thas
--- 
--- Skins et voix FranÁaises : Eliah, Ner'zhul
+--
+-- Skins et voix Fran√ßaises : Eliah, Ner'zhul
 -- Version Allemande par Arne Meier et Halisstra, Lothar
--- Remerciements spÈciaux pour Sadyre (JoL)
+-- Remerciements sp√©ciaux pour Sadyre (JoL)
 -- Version 11.05.2006-1
 ------------------------------------------------------------------------------------------------------
 
@@ -166,7 +166,7 @@ function Necrosis_Localization_Dialog_De()
 		["Radar"] = {
 			Label = "|c00FFFFFFD\195\164monen sp\195\188ren|r"
 		},
-		["AmplifyCooldown"] = "Mit der rechten Taste klicken f\195\188r verst‰rken",
+		["AmplifyCooldown"] = "Mit der rechten Taste klicken f\195\188r verst√§rken",
 		["DominationCooldown"] = "Mit der rechten Taste klicken f\195\188r eine schnelle Beschw\195\182rung",
 		["LastSpell"] = "Mittlere Taste klicken f\195\188r ",
 	};
@@ -243,7 +243,7 @@ function Necrosis_Localization_Dialog_De()
 		["Turquoise"] = "T\195\188rkis",
 		["X"] = "X"
 	};
-	
+
 	NECROSIS_CONFIGURATION = {
 		["Menu1"] = "Splitter Einstellungen",
 		["Menu2"] = "Nachrichten Einstellungen",
@@ -271,7 +271,7 @@ function Necrosis_Localization_Dialog_De()
 		["BuffMenu"] = "Setze das Spruch Men\195\188 nach links",
 		["CurseMenu"] = "Setze das Fluch Men\195\188 nach links",
 		["PetMenu"] = "Setze das Diener Men\195\188 nach links",
-		["STimerLeft"] = "Zeige die Timer auf der linken Seite des Knopfes",		
+		["STimerLeft"] = "Zeige die Timer auf der linken Seite des Knopfes",
 		["ShowCount"] = "Zeige die Anzahl der Seelensplitter in Necrosis",
 		["CountType"] = "Stein Typ gez\195\164hlt",
 		["Circle"] = "Anzeige in der grafischen Sph\195\164re",
@@ -281,7 +281,7 @@ function Necrosis_Localization_Dialog_De()
 		["ShowSteedSummon"] = "Zuf\195\164llige Spr\195\188che (Mount)",
 		["ChatType"] = "Necrosis Nachrichten als System-Nachrichten anzeigen",
 		["NecrosisSize"] = "Gr\195\182\195\159e des Necrosis Button",
-		["BanishSize"] = "Gr\195\182\195\159e des Verbannen Button",		
+		["BanishSize"] = "Gr\195\182\195\159e des Verbannen Button",
 		["TranseSize"] = "Gr\195\182\195\159e des Trance und Anti-Fear Buttons",
 		["Skin"] = "Aussehen der Necrosis Sph\195\164re",
 		["Show"] = {

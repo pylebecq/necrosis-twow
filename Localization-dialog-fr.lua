@@ -1,13 +1,13 @@
 ------------------------------------------------------------------------------------------------------
 -- Necrosis LdC
 --
--- Créateur initial (US) : Infernal (http://www.revolvus.com/games/interface/necrosis/)
--- Implémentation de base (FR) : Tilienna Thorondor
+-- CrÃ©ateur initial (US) : Infernal (http://www.revolvus.com/games/interface/necrosis/)
+-- ImplÃ©mentation de base (FR) : Tilienna Thorondor
 -- Reprise du projet : Lomig & Nyx des Larmes de Cenarius, Kael'Thas
--- 
--- Skins et voix Françaises : Eliah, Ner'zhul
+--
+-- Skins et voix FranÃ§aises : Eliah, Ner'zhul
 -- Version Allemande par Arne Meier et Halisstra, Lothar
--- Remerciements spéciaux pour Sadyre (JoL)
+-- Remerciements spÃ©ciaux pour Sadyre (JoL)
 -- Version 28.06.2006-1
 ------------------------------------------------------------------------------------------------------
 
@@ -218,8 +218,8 @@ function Necrosis_Localization_Dialog_Fr()
 			["UserConfig"] = "<lightYellow>Configuration charg\195\169e"
 		},
 		["Help"] = {
-			"/necro recall -- Centre Necrosis and tous les boutons au centre de l'écran",
-			"/necro sm -- Remplace les messages de pierre d'\195\162me et d'invocation par des versions courtes spéciales raid"
+			"/necro recall -- Centre Necrosis and tous les boutons au centre de l'Ã©cran",
+			"/necro sm -- Remplace les messages de pierre d'\195\162me et d'invocation par des versions courtes spÃ©ciales raid"
 		},
 		["EquipMessage"] = "Equipe ",
 		["SwitchMessage"] = " \195\160 la place de ",
@@ -241,7 +241,7 @@ function Necrosis_Localization_Dialog_Fr()
 		["Turquoise"] = "Turquoise",
 		["X"] = "X"
 	};
-	
+
 	NECROSIS_CONFIGURATION = {
 		["Menu1"] = "Configuration des fragments",
 		["Menu2"] = "Configuration des messages",

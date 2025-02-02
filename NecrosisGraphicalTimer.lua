@@ -1,13 +1,13 @@
 ------------------------------------------------------------------------------------------------------
 -- Necrosis LdC
 --
--- Créateur initial (US) : Infernal (http://www.revolvus.com/games/interface/necrosis/)
--- Implémentation de base (FR) : Tilienna Thorondor
+-- CrÃ©ateur initial (US) : Infernal (http://www.revolvus.com/games/interface/necrosis/)
+-- ImplÃ©mentation de base (FR) : Tilienna Thorondor
 -- Reprise du projet : Lomig & Nyx des Larmes de Cenarius, Kael'Thas
--- 
--- Skins et voix Françaises : Eliah, Ner'zhul
+--
+-- Skins et voix FranÃ§aises : Eliah, Ner'zhul
 -- Version Allemande par Arne Meier et Halisstra, Lothar
--- Remerciements spéciaux pour Sadyre (JoL)
+-- Remerciements spÃ©ciaux pour Sadyre (JoL)
 -- Version 07.04.2006-1
 ------------------------------------------------------------------------------------------------------
 
@@ -19,13 +19,13 @@
 	-- TimeMax = "TimeMax du sort",
 	-- Time = "Time du sort",
 	-- titre = "vrai si titre, faux sinon",
-	-- temps = "timer numérique",
-	-- Gtimer = "Numéro du timer associé (entre 1 et 65)"
+	-- temps = "timer numÃ©rique",
+	-- Gtimer = "NumÃ©ro du timer associÃ© (entre 1 et 65)"
 -- }
 function NecrosisAfficheTimer(tableau, pointeur)
-	-- On définit l'endroit ou apparaitra la première frame
-	-- On déclare que la première frame est toujours le premier mob (logique :P)
-	
+	-- On dÃ©finit l'endroit ou apparaitra la premiÃ¨re frame
+	-- On dÃ©clare que la premiÃ¨re frame est toujours le premier mob (logique :P)
+
 	if tableau ~= nil then
 		local TimerTarget = 0;
 		local yPosition = NecrosisConfig.SensListe * 5;
@@ -37,10 +37,10 @@ function NecrosisAfficheTimer(tableau, pointeur)
 		else
 			PositionTitre = {-13, -11};
 		end
-			
-	
+
+
 		for index =  1, table.getn(tableau.texte), 1 do
-			-- Si l'entrée est un titre de mob
+			-- Si l'entrÃ©e est un titre de mob
 			if tableau.titre[index] then
 				-- On change de groupe de mob
 				TimerTarget = TimerTarget + 1;
@@ -61,8 +61,8 @@ function NecrosisAfficheTimer(tableau, pointeur)
 			else
 				-- Pareil pour les DoT
 				local JustifInverse = "LEFT";
-				if NecrosisConfig.SpellTimerJust == "LEFT" then JustifInverse = "RIGHT"; end	
-			
+				if NecrosisConfig.SpellTimerJust == "LEFT" then JustifInverse = "RIGHT"; end
+
 				local frameName1 = "NecrosisTimer"..tableau.Gtimer[index].."Text";
 				local frameItem1 = getglobal(frameName1);
 				local frameName2 = "NecrosisTimer"..tableau.Gtimer[index].."Bar";
@@ -131,7 +131,7 @@ function Necrosis_AddFrame(SpellTimer, TimerTable)
 		if not TimerTable[i] then
 			TimerTable[i] = true;
 			SpellTimer[table.getn(SpellTimer)].Gtimer = i;
-			-- Affichage du timer graphique associé
+			-- Affichage du timer graphique associÃ©
 			if NecrosisConfig.Graphical then
 				local elements = {"Text", "Bar", "Texture", "OutText"}
 				for j = 1, 4, 1 do
@@ -155,8 +155,8 @@ function Necrosis_RemoveFrame(Gtime, TimerTable)
 		frameItem:Hide();
 	end
 
-	-- On déclare le timer graphique comme réutilisable
+	-- On dÃ©clare le timer graphique comme rÃ©utilisable
 	TimerTable[Gtime] = false;
-	
+
 	return TimerTable;
 end

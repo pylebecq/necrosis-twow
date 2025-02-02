@@ -1,33 +1,33 @@
 ------------------------------------------------------------------------------------------------------
 -- Necrosis LdC
 --
--- Créateur initial (US) : Infernal (http://www.shadydesign.com/necrosis/files/)
--- Implémentation de base (FR) : Tilienna Thorondor
+-- CrÃ©ateur initial (US) : Infernal (http://www.shadydesign.com/necrosis/files/)
+-- ImplÃ©mentation de base (FR) : Tilienna Thorondor
 -- Reprise du projet : Lomig & Nyx des Larmes de Cenarius, Kael'Thas
--- Skins et voix Françaises : Eliah, Ner'zhul
+-- Skins et voix FranÃ§aises : Eliah, Ner'zhul
 -- Version 01.05.2006-2
 ------------------------------------------------------------------------------------------------------
 
 
--- Les textes d'invocation du démoniste
+-- Les textes d'invocation du dÃ©moniste
 ----------------------------------------
--- Ici sont rassemblés les textes d'invocation pour le démoniste. Vous pouvez les modifier
--- Pour qu'ils collent plus à votre personnage !
+-- Ici sont rassemblÃ©s les textes d'invocation pour le dÃ©moniste. Vous pouvez les modifier
+-- Pour qu'ils collent plus Ã  votre personnage !
 -- Pour ceci, voici une aide :
--- Les invocations sont de type "Blah blah blah" Le joueur invoqué "Blah blah blah"
--- Si vous voulez écrire "Je vous invoque 'Nom du joueur' si vous cliquez sur mon portail"
--- Il faut savoir que le nom de la cible est remplacé par <target>
+-- Les invocations sont de type "Blah blah blah" Le joueur invoquÃ© "Blah blah blah"
+-- Si vous voulez Ã©crire "Je vous invoque 'Nom du joueur' si vous cliquez sur mon portail"
+-- Il faut savoir que le nom de la cible est remplacÃ© par <target>
 -- alors il faudra rajouter avant } :
 -- "Je vous invoque <target> si vous cliquez sur mon portail"
 --
--- La même chose est valable pour les messages de pierre d'âme
+-- La mÃªme chose est valable pour les messages de pierre d'Ã¢me
 --
--- En ce qui concerne l'invocation des démons, ça a l'air compliqué mais ça ne l'est pas vraiment
--- Chaque démon est numéroté de 1 à 4
--- A l'intérieur de ces démons chaque discours d'invocation est numérotée de 1 à x
--- A l'intérieur de ces discours d'invocation, des retours à la ligne sur la fenetre de chat est possible
--- J'espère que les commentaires que j'y ai mis sont compréhensibles
--- Sinon n'hésitez pas à poster dans le sujet du forum officiel ou écrivez moi (lomig@larmes-cenarius.net)
+-- En ce qui concerne l'invocation des dÃ©mons, Ã§a a l'air compliquÃ© mais Ã§a ne l'est pas vraiment
+-- Chaque dÃ©mon est numÃ©rotÃ© de 1 Ã  4
+-- A l'intÃ©rieur de ces dÃ©mons chaque discours d'invocation est numÃ©rotÃ©e de 1 Ã  x
+-- A l'intÃ©rieur de ces discours d'invocation, des retours Ã  la ligne sur la fenetre de chat est possible
+-- J'espÃ¨re que les commentaires que j'y ai mis sont comprÃ©hensibles
+-- Sinon n'hÃ©sitez pas Ã  poster dans le sujet du forum officiel ou Ã©crivez moi (lomig@larmes-cenarius.net)
 
 
 -- Texts for a summoning by a warlock
@@ -40,7 +40,7 @@
 -- The target's name is replaced by <target>
 -- you need to add before the } :
 -- "In few seconds <target> will be able to help us",
--- 
+--
 -- The same thing is available for soulstone messages
 --
 -- As for the demon summoning, it seems to be complicated but it is not
@@ -51,24 +51,24 @@
 -- If not, do not hesistate to mail me (lomig@larmes-cenarius.net)
 
 
--- Texte für das Ritual der Beschwörung
+-- Texte fÃ¼r das Ritual der BeschwÃ¶rung
 ----------------------------------------
--- Hier sind einige Beschwörungstexte für deinen Hexenmeister. Du kannst sie ändern
+-- Hier sind einige BeschwÃ¶rungstexte fÃ¼r deinen Hexenmeister. Du kannst sie Ã¤ndern
 -- um deinen Hexenmeisterdenken ein wenig anzupassen!
 -- Hier ein paar Tipps. :)
--- Der korrekte Syntax ist "Blah blah blah" ausgewälter Spieler "Blah blah blah"
--- Wenn du schreiben möchtest "In wenigen Sekunden wird 'Spielername' in der Lage sein uns zu helfen"
--- musst du vor dem }; hinzufügen:
+-- Der korrekte Syntax ist "Blah blah blah" ausgewÃ¤lter Spieler "Blah blah blah"
+-- Wenn du schreiben mÃ¶chtest "In wenigen Sekunden wird 'Spielername' in der Lage sein uns zu helfen"
+-- musst du vor dem }; hinzufÃ¼gen:
 -- "In wenigen Sekunden wird <target> in der Lage sein uns zu helfen",
--- 
--- Das gleiche gilt für Seelenstein Nachrichten.
 --
--- Das Beschwören von Dämonen: Es sieht zwar kompliziert aus, aber es ist nicht kompliziert
--- Jeder Dämon ist von 1 bis 4 durchnummeriert
--- Innerhalb dieser Dämonen ist jeder Beschwörungsspruch von 1 bis X durchnummeriert
--- Diese Sprüche können einige Sequenzen enthalten, die ingame dann im Chatfenster angezeigt werden
--- Ich habe einige Anmerkungen bei den Beispielsätzen hinzugefügt, ich hoffe sie sind verständlich
--- Sollten sie es nicht sein, zögert nicht mich zu kontaktieren (lomig@larmes-cenarius.net)
+-- Das gleiche gilt fÃ¼r Seelenstein Nachrichten.
+--
+-- Das BeschwÃ¶ren von DÃ¤monen: Es sieht zwar kompliziert aus, aber es ist nicht kompliziert
+-- Jeder DÃ¤mon ist von 1 bis 4 durchnummeriert
+-- Innerhalb dieser DÃ¤monen ist jeder BeschwÃ¶rungsspruch von 1 bis X durchnummeriert
+-- Diese SprÃ¼che kÃ¶nnen einige Sequenzen enthalten, die ingame dann im Chatfenster angezeigt werden
+-- Ich habe einige Anmerkungen bei den BeispielsÃ¤tzen hinzugefÃ¼gt, ich hoffe sie sind verstÃ¤ndlich
+-- Sollten sie es nicht sein, zÃ¶gert nicht mich zu kontaktieren (lomig@larmes-cenarius.net)
 
 
 -------------------------------------
@@ -133,7 +133,7 @@ function Necrosis_Localization_Speech_En()
 		};
 		-- Felhunter
 		[4] = {
-			-- Summon speech 1			
+			-- Summon speech 1
 			[1] = {
 				"<pet> ! <pet> ! Come on boy, come here ! <pet> !",
 			},
@@ -144,25 +144,25 @@ function Necrosis_Localization_Speech_En()
 			[1] = {
 				-- First sentence in the chat window
 				"Fishing ? Yes I love fishing... Look !",
-				-- Second sentence in the chat window				
+				-- Second sentence in the chat window
 				"I close my eyes, I move my fingers like that... And voila ! Yes, yes, it is a fish, I can swear you !",
 			},
-			-- Summon speech 2			
+			-- Summon speech 2
 			[2] = {
-				-- First sentence in the chat window				
+				-- First sentence in the chat window
 				"Anyway I hate you all ! I don't need you, I have friends.... Powerful friends !",
-				-- Second sentence in the chat window				
+				-- Second sentence in the chat window
 				"COME TO ME, CREATURE OF HELL AND NIGHTMARE !",
 			},
 		};
 		-- Sentences for the stead summon
 		[6] = {
-			-- Summon speech 1	
+			-- Summon speech 1
 			[1] = {
 				-- First sentence in the chat window
 				"Hey, I'm late ! Let's find a horse that roxes !",
 			},
-			-- Summon speech 2	
+			-- Summon speech 2
 			[2] = {
 				-- First sentence in the chat window
 				"I am summoning a stead from nightmare !",
@@ -171,7 +171,7 @@ function Necrosis_Localization_Speech_En()
 			},
 		};
 	};
-	
+
 	NECROSIS_SHORT_MESSAGES = {
 		{{"--> <target> is soulstoned for 30 minutes <--"}},
 		{{"<TP> Summoning <target>, please click on the portal <TP>"}},
@@ -203,7 +203,7 @@ function Necrosis_Localization_Speech_Fr()
 			"Tel un lapin dans un chapeau de mage, <target> va appara\195\174tre devant vos yeux \195\169bahis. Et hop.",
 		},
 		[6] = {
-			"PAR ASTAROTH ET DASMODES, JE T'INVOQUE, O TOUT PUISSANT DEMON DES SEPTS ENFERS, PARANGON VELU DES INFRA MONDES DEMONIAQUES, PAR LA PUISSANCE DU SCEAU ANCESTR... euh ?!? Ah merde c’est <target> qui d\195\169barque !!",
+			"PAR ASTAROTH ET DASMODES, JE T'INVOQUE, O TOUT PUISSANT DEMON DES SEPTS ENFERS, PARANGON VELU DES INFRA MONDES DEMONIAQUES, PAR LA PUISSANCE DU SCEAU ANCESTR... euh ?!? Ah merde cÂ’est <target> qui d\195\169barque !!",
 		},
 		[7] = {
 			"Chantons ensemble ! Venu de nulle part, c'est <target>, Plus vif que le serpent, c'est <target> !",
@@ -222,28 +222,28 @@ function Necrosis_Localization_Speech_Fr()
 			"<target> peut partir siroter un caf\195\169, et pourra se relever du wipe qui s'en suivra gr\195\162ce \195\160 sa pierre d'\195\162me",
 		},
 		[3] = {
-			"Pierre pos\195\169e sur <target>, vous pouvez recommencer \195\160 faire n’importe quoi sans risque",
+			"Pierre pos\195\169e sur <target>, vous pouvez recommencer \195\160 faire nÂ’importe quoi sans risque",
 		},
 		[4] = {
-			"Gr\195\162ce \195\160 sa pierre d’\195\162me, <target> est pass\195\169 en mode Easy wipe",
+			"Gr\195\162ce \195\160 sa pierre dÂ’\195\162me, <target> est pass\195\169 en mode Easy wipe",
 		},
 		[5] = {
-			"<target> peut d\195\169sormais revenir d’entre les morts, histoire d’organiser le prochain wipe",
+			"<target> peut d\195\169sormais revenir dÂ’entre les morts, histoire dÂ’organiser le prochain wipe",
 		},
 		[6] = {
-			"Les hindous croient \195\160 l’immortalit\195\169, <target> aussi depuis que je lui ai pos\195\169 une pierre d’\195\162me",
+			"Les hindous croient \195\160 lÂ’immortalit\195\169, <target> aussi depuis que je lui ai pos\195\169 une pierre dÂ’\195\162me",
 		},
 		[7] = {
 			"<target> est d\195\169sormais \195\169quip\195\169 de son kit de survie temporaire.",
 		},
 		[8] = {
-			"Tel le ph\195\169nix, <target> pourra revenir d’entre les flammes de l’enfer (Faut dire aussi qu’il a beaucoup de rf...)",
+			"Tel le ph\195\169nix, <target> pourra revenir dÂ’entre les flammes de lÂ’enfer (Faut dire aussi quÂ’il a beaucoup de rf...)",
 		},
 		[9] = {
-			"Gr\195\162ce \195\160 sa pierre d’\195\162me, <target> peut de nouveau faire n’importe quoi.",
+			"Gr\195\162ce \195\160 sa pierre dÂ’\195\162me, <target> peut de nouveau faire nÂ’importe quoi.",
 		},
 		[10] = {
-			"Sur <target> poser une belle pierre d’\195\162me,",
+			"Sur <target> poser une belle pierre dÂ’\195\162me,",
 			"Voil\195\160 qui peut ma foi \195\169viter bien des drames !",
 		},
 	};
@@ -251,11 +251,11 @@ function Necrosis_Localization_Speech_Fr()
 	NECROSIS_PET_MESSAGE = {
 		-- Diablotin
 		[1] = {
-			-- Phrase aléatoire 1
+			-- Phrase alÃ©atoire 1
 			[1] = {
 				"Bon, s\195\162le petite peste de Diablotin, tu arr\195\170tes de bouder et tu viens m'aider ! ET C'EST UN ORDRE !",
 			},
-			-- Phrase aléatoire 2
+			-- Phrase alÃ©atoire 2
 			[2] = {
 				"<pet> ! AU PIED ! TOUT DE SUITE !",
 			},
@@ -263,13 +263,13 @@ function Necrosis_Localization_Speech_Fr()
 				"Attendez, je sors mon briquet !",
 			},
 		};
-		-- Marcheur éthéré
+		-- Marcheur Ã©thÃ©rÃ©
 		[2] = {
-			-- Phrase aléatoire 1
+			-- Phrase alÃ©atoire 1
 			[1] = {
-				-- 1ere ligne dans la fenêtre de chat
-				"Oups, je vais sans doute avoir besoin d'un idiot pour prendre les coups à ma place...",
-				-- 1ere ligne dans la fenêtre de chat
+				-- 1ere ligne dans la fenÃªtre de chat
+				"Oups, je vais sans doute avoir besoin d'un idiot pour prendre les coups Ã  ma place...",
+				-- 1ere ligne dans la fenÃªtre de chat
 				"<pet>, viens m'aider !",
 			},
 			[2] = {
@@ -280,7 +280,7 @@ function Necrosis_Localization_Speech_Fr()
 		};
 		-- Succube
 		[3] = {
-			-- Phrase aléatoire 1
+			-- Phrase alÃ©atoire 1
 			[1] = {
 				"<pet> ma grande, viens m'aider ch\195\169rie !",
 			},
@@ -293,52 +293,52 @@ function Necrosis_Localization_Speech_Fr()
 		};
 		-- Chasseur corrompu
 		[4] = {
-			-- Phrase aléatoire 1
+			-- Phrase alÃ©atoire 1
 			[1] = {
 				"<pet> ! <pet> ! Aller vient mon brave, viens ! <pet> !",
 			},
 			[2] = {
-				"Rhoo, et qui c’est qui va se bouffer le mage hein ? C’est <pet> !",
+				"Rhoo, et qui cÂ’est qui va se bouffer le mage hein ? CÂ’est <pet> !",
 				"Regardez, il bave d\195\169j\195\160 :)",
 			},
 			[3] = {
-				"Une minute, je sors le caniche et j’arrive !",
+				"Une minute, je sors le caniche et jÂ’arrive !",
 			},
 		};
-		-- Phrase pour la première invocation de pet (quand Necrosis ne connait pas encore leur nom)
+		-- Phrase pour la premiÃ¨re invocation de pet (quand Necrosis ne connait pas encore leur nom)
 		[5] = {
-			-- Phrase aléatoire 1
+			-- Phrase alÃ©atoire 1
 			[1] = {
-				-- 1ere ligne dans la fenêtre de chat
+				-- 1ere ligne dans la fenÃªtre de chat
 				"La p\195\170che au d\195\169mon ? Rien de plus facile !",
-				-- 2eme ligne dans la fenêtre de chat
+				-- 2eme ligne dans la fenÃªtre de chat
 				"Bon, je ferme les yeux, j'agite les doigts comme \195\167a... et hop ! Oh, les jolies couleurs !",
 			},
-			-- Phrase aléatoire 2
+			-- Phrase alÃ©atoire 2
 			[2] = {
-				-- 1ere ligne dans la fenêtre de chat
+				-- 1ere ligne dans la fenÃªtre de chat
 				"Toute fa\195\167on je vous d\195\169teste tous ! J'ai pas besoin de vous, j'ai des amis.... Puissants !",
-				-- 2eme ligne dans la fenêtre de chat
+				-- 2eme ligne dans la fenÃªtre de chat
 				"VENEZ A MOI, CREATURES DE L'ENFER !",
 			},
-			-- Phrase aléatoire 3
+			-- Phrase alÃ©atoire 3
 			[3] = {
-				-- 1ere ligne dans la fenêtre de chat
+				-- 1ere ligne dans la fenÃªtre de chat
 				"Eh, le d\195\169mon, viens voir, il y a un truc \195\160 cogner l\195\160 !",
 			},
-			-- Phrase aléatoire 4
+			-- Phrase alÃ©atoire 4
 			[4] = {
 				"En farfouillant dans le monde abyssal, on trouve de ces trucs... Regardez, ceci par exemple !",
 			},
-				
+
 		};
 		-- Sentences for the stead summon
 		[6] = {
-			-- Phrase aléatoire 1
+			-- Phrase alÃ©atoire 1
 			[1] = {
 				"Mmmphhhh, je suis en retard ! Invoquons vite un cheval qui rox !",
 			},
-			-- Phrase aléatoire 2
+			-- Phrase alÃ©atoire 2
 			[2] = {
 				"J'invoque une monture de l'enfer !",
 			},
@@ -350,7 +350,7 @@ function Necrosis_Localization_Speech_Fr()
 				"Et hop, un cheval tout feu tout flamme !",
 			},
 			[5] = {
-				"Vous savez, depuis que j’ai mis une selle ignifug\195\169e, je n'ai plus de probl\195\168me de culotte !"
+				"Vous savez, depuis que jÂ’ai mis une selle ignifug\195\169e, je n'ai plus de probl\195\168me de culotte !"
 			},
 		};
 	};
@@ -396,7 +396,7 @@ function Necrosis_Localization_Speech_De()
 		},
 };
 
-	
+
 	NECROSIS_SHORT_MESSAGES = {
 		{{"--> <target> hat nun einen Seelenstein aktiv f\195\188r 30 Minuten <--"}},
 		{{"<Portal> Ich beschw\195\182re <target>, bitte klickt auf das Tor <Portal>"}}
@@ -405,18 +405,18 @@ function Necrosis_Localization_Speech_De()
 	NECROSIS_PET_MESSAGE = {
 		-- Wichtel
 		[1] = {
-			-- Beschwörungsspruch 1
+			-- BeschwÃ¶rungsspruch 1
 			[1] = {
 				"Na mein kleiner, b\195\182ser Wichtel, nun h\195\182r auf rumzuzicken und hilf endlich! UND DAS IST EIN BEFEHL !",
 			},
-			-- Beschwörungsspruch 2
+			-- BeschwÃ¶rungsspruch 2
 			[2] = {
 				"<pet> ! SCHWING DIE BEINE ! JETZT SOFORT !",
 			},
 		};
 		-- Leerwandler
 		[2] = {
-			-- Beschwörungsspruch 1
+			-- BeschwÃ¶rungsspruch 1
 			[1] = {
 				-- Erster Satz im Chatfenster
 				"Huuuch, anscheinend brauch ich einen Idioten, der f\195\188r mich die R\195\188be hinh\195\164lt...",
@@ -426,43 +426,43 @@ function Necrosis_Localization_Speech_De()
 		};
 		-- Sukkubus
 		[3] = {
-			-- Beschwörungsspruch 1
+			-- BeschwÃ¶rungsspruch 1
 			[1] = {
 				"<pet>, Baby, sei ein Schatzi und hilf mir!",
 			},
 		};
-		-- Teufelsjäger
+		-- TeufelsjÃ¤ger
 		[4] = {
-			-- Beschwörungsspruch 1			
+			-- BeschwÃ¶rungsspruch 1
 			[1] = {
 				"<pet> ! <pet> ! Bei Fu\195\159, mein Guter, bei Fu\195\159 ! <pet> !",
 			},
 		};
-		-- Sätze für die erste Beschwörung : Wenn Necrosis den Namen Deines Dämons noch nicht kennt
+		-- SÃ¤tze fÃ¼r die erste BeschwÃ¶rung : Wenn Necrosis den Namen Deines DÃ¤mons noch nicht kennt
 		[5] = {
-			-- Beschwörungsspruch 1
+			-- BeschwÃ¶rungsspruch 1
 			[1] = {
 				-- Erster Satz im Chatfenster
 				"Angeln ? Oh jaaa, ich liebe Angeln, schau !",
 				-- Zweiter Satz im Chatfenster
 				"Ich schlie\195\159e meine Augen, dann bewege ich meine Finger in etwa so... Und voila ! Ja, aber sicher, es ist ein Fisch, ich schw\195\182re es Dir !",
 			},
-			-- Beschwörungsspruch 2			
+			-- BeschwÃ¶rungsspruch 2
 			[2] = {
-				-- Erster Satz im Chatfenster				
+				-- Erster Satz im Chatfenster
 				"Nichtsdestotrotz hasse ich Euch alle ! Ich brauche Euch nicht, ich habe Freunde.... M\195\164chtige Freunde !",
-				-- Zweiter Satz im Chatfenster				
+				-- Zweiter Satz im Chatfenster
 				"KOMM ZU MIR, KREATUR, DIE DU KOMMST AUS DER H\195\150LLE UND ENDLOSEN ALPTR\195\132UMEN !",
 			},
 		};
-		-- Sprüche zur Beschwörung des Mounts
+		-- SprÃ¼che zur BeschwÃ¶rung des Mounts
 		[6] = {
-			-- Beschwörungsspruch 1	
+			-- BeschwÃ¶rungsspruch 1
 			[1] = {
 				-- Erster Satz im Chatfenster
 				"Hey, ich bin sp\195\164t dran ! Ich hoffe ich finde ein Pferd das rennt wie ein ge\195\182lter Blitz !",
 			},
-			-- Beschwörungsspruch 2	
+			-- BeschwÃ¶rungsspruch 2
 			[2] = {
 				-- Erster Satz im Chatfenster
 				"Ich beschw\195\182re ein Reittier, das einem Alptraum entspringt!",
@@ -475,14 +475,14 @@ function Necrosis_Localization_Speech_De()
 end
 
 
--- Pour les caractères spéciaux :
+-- Pour les caractÃ¨res spÃ©ciaux :
 -- Besondere Zeichen :
--- é = \195\169 ---- è = \195\168
--- à = \195\160 ---- â = \195\162
--- ô = \195\180 ---- ê = \195\170
--- û = \195\187 ---- ä = \195\164
--- Ä = \195\132 ---- ö = \195\182
--- Ö = \195\150 ---- ü = \195\188
--- Ü = \195\156 ---- ß = \195\159
--- ç = \195\167 ---- î = \195\174
+-- Ã© = \195\169 ---- Ã¨ = \195\168
+-- Ã  = \195\160 ---- Ã¢ = \195\162
+-- Ã´ = \195\180 ---- Ãª = \195\170
+-- Ã» = \195\187 ---- Ã¤ = \195\164
+-- Ã„ = \195\132 ---- Ã¶ = \195\182
+-- Ã– = \195\150 ---- Ã¼ = \195\188
+-- Ãœ = \195\156 ---- ÃŸ = \195\159
+-- Ã§ = \195\167 ---- Ã® = \195\174
 

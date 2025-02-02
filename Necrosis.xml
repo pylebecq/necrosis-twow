@@ -12,7 +12,7 @@
 	<Script file="NecrosisMessage.lua"/>
 	<Script file="NecrosisTimerFunction.lua"/>
 	<Script file="NecrosisGraphicalTimer.lua"/>
-	
+
 	<Frame name="Necrosis_Variable_Frame" hidden="false">
 		<Scripts>
 			<OnUpdate>
@@ -20,7 +20,7 @@
 			</OnUpdate>
 		</Scripts>
 	</Frame>
-	
+
 	<Button name="NecrosisSpellTimerButton" frameStrata="MEDIUM" enableMouse="true" movable="true" parent="UIParent">
 		<Size>
 			<AbsDimension x="34" y="34"/>
@@ -293,7 +293,7 @@
 		<NormalTexture file="Interface\AddOns\Necrosis\UI\FirestoneButton-01"/>
 		<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
 	</Button>
-	
+
 	<Button name="NecrosisMountButton" hidden="false" enableMouse="true"  toplevel="true" parent="UIParent" movable="true">
 		<Size>
 			<AbsDimension x="34" y="34"/>
@@ -635,7 +635,7 @@
 		<NormalTexture file="Interface\AddOns\Necrosis\UI\Banish-01"/>
 		<HighlightTexture file="Interface\AddOns\Necrosis\UI\Banish-02"/>
 	</Button>
-	
+
 	<Button name="NecrosisPetMenuButton" hidden="false" enableMouse="true"  toplevel="true" parent="UIParent" movable="true">
 		<Size>
 			<AbsDimension x="34" y="34"/>
@@ -675,7 +675,7 @@
 		<NormalTexture file="Interface\AddOns\Necrosis\UI\PetMenuButton-01"/>
 		<HighlightTexture file="Interface\AddOns\Necrosis\UI\PetMenuButton-02"/>
 	</Button>
-	
+
 	<Button name="NecrosisPetMenu1" hidden="false" enableMouse="true"  toplevel="true" parent="UIParent" movable="true">
 		<Size>
 			<AbsDimension x="40" y="40"/>
@@ -705,7 +705,7 @@
 		<NormalTexture file="Interface\AddOns\Necrosis\UI\Domination-01"/>
 		<HighlightTexture file="Interface\AddOns\Necrosis\UI\Domination-02"/>
 	</Button>
-	
+
 	<Button name="NecrosisPetMenu2" hidden="false" enableMouse="true"  toplevel="true" parent="UIParent" movable="true">
 		<Size>
 			<AbsDimension x="40" y="40"/>
@@ -735,7 +735,7 @@
 		<NormalTexture file="Interface\AddOns\Necrosis\UI\Imp-01"/>
 		<HighlightTexture file="Interface\AddOns\Necrosis\UI\Imp-02"/>
 	</Button>
-	
+
 	<Button name="NecrosisPetMenu3" hidden="false" enableMouse="true"  toplevel="true" parent="UIParent" movable="true">
 		<Size>
 			<AbsDimension x="40" y="40"/>
@@ -765,7 +765,7 @@
 		<NormalTexture file="Interface\AddOns\Necrosis\UI\Voidwalker-01"/>
 		<HighlightTexture file="Interface\AddOns\Necrosis\UI\Voidwalker-02"/>
 	</Button>
-	
+
 	<Button name="NecrosisPetMenu4" hidden="false" enableMouse="true"  toplevel="true" parent="UIParent" movable="true">
 		<Size>
 			<AbsDimension x="40" y="40"/>
@@ -795,7 +795,7 @@
 		<NormalTexture file="Interface\AddOns\Necrosis\UI\Succubus-01"/>
 		<HighlightTexture file="Interface\AddOns\Necrosis\UI\Succubus-02"/>
 	</Button>
-	
+
 	<Button name="NecrosisPetMenu5" hidden="false" enableMouse="true"  toplevel="true" parent="UIParent" movable="true">
 		<Size>
 			<AbsDimension x="40" y="40"/>
@@ -825,7 +825,7 @@
 		<NormalTexture file="Interface\AddOns\Necrosis\UI\Felhunter-01"/>
 		<HighlightTexture file="Interface\AddOns\Necrosis\UI\Felhunter-02"/>
 	</Button>
-	
+
 	<Button name="NecrosisPetMenu6" hidden="false" enableMouse="true"  toplevel="true" parent="UIParent" movable="true">
 		<Size>
 			<AbsDimension x="40" y="40"/>
@@ -944,7 +944,7 @@
 		<HighlightTexture file="Interface\AddOns\Necrosis\UI\Sacrifice-02"/>
 	</Button>
 
-	
+
 	<Button name="NecrosisCurseMenuButton" hidden="false" enableMouse="true"  toplevel="true" parent="UIParent" movable="true">
 		<Size>
 			<AbsDimension x="34" y="34"/>
@@ -1299,7 +1299,7 @@
 		<PushedTexture file="Interface\Addons\Necrosis\UI\ShadowTrance-Icon-03"/>
 		<HighlightTexture file="Interface\Addons\Necrosis\UI\ShadowTrance-Icon-02"/>
 	</Button>
-	
+
 	<Button name="NecrosisAntiFearButton" frameStrata="MEDIUM" movable="true" parent="UIParent">
 		<Size>
 			<AbsDimension x="43" y="43"/>
@@ -1328,6 +1328,6 @@
 		<NormalTexture file="Interface\Addons\Necrosis\UI\AntiFear-01"/>
 		<HighlightTexture file="Interface\Addons\Necrosis\UI\AntiFear-02"/>
 	</Button>
-		
+
 	<GameTooltip name="NecrosisTooltip" frameStrata="LOW" toplevel="true" movable="true" parent="UIParent" inherits="GameTooltipTemplate" />
 </Ui>

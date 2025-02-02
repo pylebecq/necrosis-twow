@@ -1,13 +1,13 @@
 ------------------------------------------------------------------------------------------------------
 -- Necrosis LdC
 --
--- Créateur initial (US) : Infernal (http://www.revolvus.com/games/interface/necrosis/)
--- Implémentation de base (FR) : Tilienna Thorondor
+-- CrÃ©ateur initial (US) : Infernal (http://www.revolvus.com/games/interface/necrosis/)
+-- ImplÃ©mentation de base (FR) : Tilienna Thorondor
 -- Reprise du projet : Lomig & Nyx des Larmes de Cenarius, Kael'Thas
 --
--- Skins et voix Françaises : Eliah, Ner'zhul
+-- Skins et voix FranÃ§aises : Eliah, Ner'zhul
 -- Version Allemande par Arne Meier et Halisstra, Lothar
--- Remerciements spéciaux pour Sadyre (JoL)
+-- Remerciements spÃ©ciaux pour Sadyre (JoL)
 -- Version 06.05.2006-1
 ------------------------------------------------------------------------------------------------------
 
@@ -36,7 +36,7 @@ NECROSIS_ANTI_FEAR_SPELL = {
 		"Divine Shield",		-- Paladin Holy buff
 		"Tremor Totem",			-- Shaman totem
 		"Abolish Magic"			-- Majordomo (NPC) spell
-		--  "Grounding Totem" is not considerated, as it can remove other spell than fear, and only one each 10 sec.		
+		--  "Grounding Totem" is not considerated, as it can remove other spell than fear, and only one each 10 sec.
 	},
 
 	-- Debuffs and curses giving temporary immunity to fear effects
@@ -56,7 +56,7 @@ NECROSIS_ANTI_FEAR_SRCH = "Your (.+) failed. (.+) is immune."
 NECROSIS_SPELL_TABLE = {
 	[1] = {ID = nil, Rank = nil, CastTime = nil, Mana = nil,
 		Name = "Summon Felsteed",		Length = 0,	Type = 0},
-	[2] = {ID = nil, Rank = nil, CastTime = nil, Mana = nil, 
+	[2] = {ID = nil, Rank = nil, CastTime = nil, Mana = nil,
 		Name = "Summon Dreadsteed",		Length = 0,	Type = 0},
 	[3] = {ID = nil, Rank = nil, CastTime = nil, Mana = nil,
 		Name = "Summon Imp",			Length = 0,	Type = 0},
@@ -148,7 +148,7 @@ NECROSIS_SPELL_TABLE = {
 -- Type 1 = Timer permanent principal
 -- Type 2 = Timer permanent
 -- Type 3 = Timer de cooldown
--- Type 4 = Timer de malédiction
+-- Type 4 = Timer de malÃ©diction
 -- Type 5 = Timer de combat
 
 NECROSIS_ITEM = {
@@ -162,7 +162,7 @@ NECROSIS_ITEM = {
 	["InfernalStone"] = "Infernal Stone",
 	["DemoniacStone"] = "Demonic Figurine",
 	["Hearthstone"] = "Hearthstone",
-	["SoulPouch"] = {"Soul Pouch", "Felcloth Bag", "Core Felcloth Bag"}	
+	["SoulPouch"] = {"Soul Pouch", "Felcloth Bag", "Core Felcloth Bag"}
 };
 
 

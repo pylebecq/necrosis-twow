@@ -106,7 +106,7 @@
 						</Offset>
 					</Anchor>
 				</Anchors>
-				<Scripts>	
+				<Scripts>
 					<OnEnter>
 						GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
 						GameTooltip:SetText(this:GetValue().." %");

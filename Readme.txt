@@ -22,7 +22,7 @@ who can speak more fluently than me to improve my pieces of writing...
 1 - What is Necrosis ?
 -------------------------------
 
-Necrosis is a mod to help Warlocks managing their stones, shards and 
+Necrosis is a mod to help Warlocks managing their stones, shards and
 demon. No more, but no less... It actually can not make a coffee, but I
 tried, I promise !
 

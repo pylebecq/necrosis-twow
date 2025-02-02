@@ -11,7 +11,7 @@
 			<AbsInset left="0" right="35" top="0" bottom="75"/>
 		</HitRectInsets>
 		<Layers>
-			<Layer level="ARTWORK">	
+			<Layer level="ARTWORK">
 				<FontString name="NecrosisShowTrance_Option" inherits="GameFontNormalSmall">
 					<Color r="1.0" g="1.0" b="1.0" a="1"/>
 					<Anchors>
@@ -113,7 +113,7 @@
 						</Offset>
 					</Anchor>
 				</Anchors>
-				<Scripts>	
+				<Scripts>
 					<OnEnter>
 						NBx, NBy = NecrosisButton:GetCenter();
 						NBx = NBx * (NecrosisConfig.NecrosisButtonScale / 100);
@@ -297,7 +297,7 @@
 						else
 							NecrosisConfig.BuffMenuPos = 34;
 						end
-						Necrosis_CreateMenu();							
+						Necrosis_CreateMenu();
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -319,7 +319,7 @@
 						else
 							NecrosisConfig.PetMenuPos = 34;
 						end
-						Necrosis_CreateMenu();						
+						Necrosis_CreateMenu();
 					</OnClick>
 				</Scripts>
 			</CheckButton>
@@ -341,7 +341,7 @@
 						else
 							NecrosisConfig.CurseMenuPos = 34;
 						end
-						Necrosis_CreateMenu();						
+						Necrosis_CreateMenu();
 					</OnClick>
 				</Scripts>
 			</CheckButton>

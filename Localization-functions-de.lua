@@ -1,13 +1,13 @@
 ------------------------------------------------------------------------------------------------------
 -- Necrosis LdC
 --
--- CrÈateur initial (US) : Infernal (http://www.revolvus.com/games/interface/necrosis/)
--- ImplÈmentation de base (FR) : Tilienna Thorondor
+-- Cr√©ateur initial (US) : Infernal (http://www.revolvus.com/games/interface/necrosis/)
+-- Impl√©mentation de base (FR) : Tilienna Thorondor
 -- Reprise du projet : Lomig & Nyx des Larmes de Cenarius, Kael'Thas
--- 
--- Skins et voix FranÁaises : Eliah, Ner'zhul
+--
+-- Skins et voix Fran√ßaises : Eliah, Ner'zhul
 -- Version Allemande par Arne Meier et Halisstra, Lothar
--- Remerciements spÈciaux pour Sadyre (JoL)
+-- Remerciements sp√©ciaux pour Sadyre (JoL)
 -- Version 28.06.2006-1
 ------------------------------------------------------------------------------------------------------
 
@@ -22,7 +22,7 @@ if ( GetLocale() == "deDE" ) then
 NECROSIS_UNIT_WARLOCK = "Hexenmeister";
 
 NECROSIS_ANTI_FEAR_SPELL = {
-	-- Buffs die tempor‰re Immunit‰t gegen¸ber Furcht geben
+	-- Buffs die tempor√§re Immunit√§t gegen√ºber Furcht geben
 	["Buff"] = {
 		"Furchtzauberschutz",		-- Dwarf priest racial trait
 		"Wille der Verlassenen",	-- Forsaken racial trait
@@ -36,7 +36,7 @@ NECROSIS_ANTI_FEAR_SPELL = {
 		"Gottesschild",			-- Paladin Holy buff
 		"Totem des Erdsto\195\159es",	-- Shaman totem
 		"Abolish Magic"			-- Majordomo (NPC) spell
-		--  "Grounding Totem" is not considerated, as it can remove other spell than fear, and only one each 10 sec.		
+		--  "Grounding Totem" is not considerated, as it can remove other spell than fear, and only one each 10 sec.
 	},
 
 	-- Debuffs and curses giving temporary immunity to fear effects
@@ -56,7 +56,7 @@ NECROSIS_ANTI_FEAR_SRCH = "(.+) war ein Fehlschlag. (.+) ist immun."
 NECROSIS_SPELL_TABLE = {
 	[1] = {ID = nil, Rank = nil, CastTime = nil, Mana = nil,
 		Name = "Teufelsross beschw\195\182ren",		Length = 0,	Type = 0},
-	[2] = {ID = nil, Rank = nil, CastTime = nil, Mana = nil, 
+	[2] = {ID = nil, Rank = nil, CastTime = nil, Mana = nil,
 		Name = "Schreckensross herbeirufen",		Length = 0,	Type = 0},
 	[3] = {ID = nil, Rank = nil, CastTime = nil, Mana = nil,
 		Name = "Wichtel beschw\195\182ren",		Length = 0,	Type = 0},
@@ -148,7 +148,7 @@ NECROSIS_SPELL_TABLE = {
 -- Type 1 = Timer permanent principal
 -- Type 2 = Timer permanent
 -- Type 3 = Timer de cooldown
--- Type 4 = Timer de malÈdiction
+-- Type 4 = Timer de mal√©diction
 -- Type 5 = Timer de combat
 
 NECROSIS_ITEM = {
@@ -162,7 +162,7 @@ NECROSIS_ITEM = {
 	["InfernalStone"] = "H\195\182llenstein",
 	["DemoniacStone"] = "D\195\164monenstatuette",
 	["Hearthstone"] = "Ruhestein",
-	["SoulPouch"] = {"Seelenbeutel", "Teufelsstofftasche", "Kernteufelsstofftasche"}	
+	["SoulPouch"] = {"Seelenbeutel", "Teufelsstofftasche", "Kernteufelsstofftasche"}
 };
 
 
@@ -198,7 +198,7 @@ NECROSIS_PET_LOCAL_NAME = {
 NECROSIS_TRANSLATION = {
 	["Cooldown"] = "Cooldown",
 	["Hearth"] = "Ruhestein",
-	["Rank"] = "Rang",	 
+	["Rank"] = "Rang",
 	["Invisible"] = "Unsichtbarkeit entdecken",
 	["LesserInvisible"] = "Geringe Unsichtbarkeit entdecken",
 	["GreaterInvisible"] = "Gro\195\159e Unsichtbarkeit entdecken",
