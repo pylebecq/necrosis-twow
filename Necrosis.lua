@@ -82,6 +82,30 @@ local SpellGroup = {
 	Visible = {true, true, true}
 };
 
+-- Clears contents but preserves subtable objects
+local function clear_tables(t)
+    for k, v in pairs(t) do
+        if type(v) == "table" then
+            -- recurse: empty the subtable
+            clear_tables(v)
+        else
+            -- remove only non-table values
+            t[k] = nil
+        end
+    end
+end
+
+
+-- Reusable buffers for graphical timers (avoid per-frame allocations)
+local GraphicalTimer = {
+  texte  = {},
+  TimeMax= {},
+  Time   = {},
+  titre  = {},
+  temps  = {},
+  Gtimer = {},
+}
+
 local TimerTable = {};
 for i = 1, 50, 1 do
 	TimerTable[i] = false;
@@ -473,54 +497,51 @@ function Necrosis_OnUpdate()
 	-- Parcours du tableau des Timers
 	if SpellTimer then
 		if update then
+			clear_tables(GraphicalTimer);
 			textTimersDisplay = "";
-			local GraphicalTimer = {texte = {}, TimeMax = {}, Time = {}, titre = {}, temps = {}, Gtimer = {}};
 			for index = 1, table.getn(SpellTimer), 1 do
 				if SpellTimer[index] then
 					if (GetTime() <= SpellTimer[index].TimeMax) then
 						-- Création de l'affichage des timers
 						textTimersDisplay, SpellGroup, GraphicalTimer, TimerTable = Necrosis_DisplayTimer(textTimersDisplay, index, SpellGroup, SpellTimer, GraphicalTimer, TimerTable);
 					end
-					-- Action toutes les secondes
-					if (update) then
-						-- On enlève les timers terminés
-						if curTime >= (SpellTimer[index].TimeMax - 0.5) and SpellTimer[index].TimeMax ~= -1 then
-							-- Si le timer était celui de la Pierre d'âme, on prévient le Démoniste
-							if SpellTimer[index].Name == NECROSIS_SPELL_TABLE[11].Name then
-								Necrosis_Msg(NECROSIS_MESSAGE.Information.SoulstoneEnd, "USER");
-								SpellTimer[index].Target = "";
-								SpellTimer[index].TimeMax = -1;
-								if NecrosisConfig.Sound then PlaySoundFile(NECROSIS_SOUND.SoulstoneEnd); end
-								Necrosis_RemoveFrame(SpellTimer[index].Gtimer, TimerTable);
-									-- On met à jour l'apparence du bouton de la pierre d'âme
-								Necrosis_UpdateIcons();
-							-- Sinon on enlève le timer silencieusement (mais pas en cas d'enslave)
-							elseif SpellTimer[index].Name ~= NECROSIS_SPELL_TABLE[10].Name then
+					-- On enlève les timers terminés
+					if curTime >= (SpellTimer[index].TimeMax - 0.5) and SpellTimer[index].TimeMax ~= -1 then
+						-- Si le timer était celui de la Pierre d'âme, on prévient le Démoniste
+						if SpellTimer[index].Name == NECROSIS_SPELL_TABLE[11].Name then
+							Necrosis_Msg(NECROSIS_MESSAGE.Information.SoulstoneEnd, "USER");
+							SpellTimer[index].Target = "";
+							SpellTimer[index].TimeMax = -1;
+							if NecrosisConfig.Sound then PlaySoundFile(NECROSIS_SOUND.SoulstoneEnd); end
+							Necrosis_RemoveFrame(SpellTimer[index].Gtimer, TimerTable);
+								-- On met à jour l'apparence du bouton de la pierre d'âme
+							Necrosis_UpdateIcons();
+						-- Sinon on enlève le timer silencieusement (mais pas en cas d'enslave)
+						elseif SpellTimer[index].Name ~= NECROSIS_SPELL_TABLE[10].Name then
+							SpellTimer, TimerTable = Necrosis_RetraitTimerParIndex(index, SpellTimer, TimerTable);
+							index = 0;
+							break;
+						end
+					end
+					-- Si le Démoniste n'est plus sous l'emprise du Sacrifice
+					if SpellTimer and SpellTimer[index].Name == NECROSIS_SPELL_TABLE[17].Name then -- Sacrifice
+						if not Necrosis_UnitHasEffect("player", SpellTimer[index].Name) and SpellTimer[index].TimeMax ~= nil then
+							SpellTimer, TimerTable = Necrosis_RetraitTimerParIndex(index, SpellTimer, TimerTable);
+							index = 0;
+							break;
+						end
+					end
+					-- Si la cible visée n'est plus atteinte par un sort lancé [résists]
+					if SpellTimer and (SpellTimer[index].Type == 4 or SpellTimer[index].Type == 5)
+						and SpellTimer[index].Target == UnitName("target")
+						then
+						-- On triche pour laisser le temps au mob de bien sentir qu'il est débuffé ^^
+						if curTime >= ((SpellTimer[index].TimeMax - SpellTimer[index].Time) + 1.5)
+							and SpellTimer[index] ~= 6 then
+							if not Necrosis_UnitHasEffect("target", SpellTimer[index].Name) then
 								SpellTimer, TimerTable = Necrosis_RetraitTimerParIndex(index, SpellTimer, TimerTable);
 								index = 0;
 								break;
-							end
-						end
-						-- Si le Démoniste n'est plus sous l'emprise du Sacrifice
-						if SpellTimer and SpellTimer[index].Name == NECROSIS_SPELL_TABLE[17].Name then -- Sacrifice
-							if not Necrosis_UnitHasEffect("player", SpellTimer[index].Name) and SpellTimer[index].TimeMax ~= nil then
-								SpellTimer, TimerTable = Necrosis_RetraitTimerParIndex(index, SpellTimer, TimerTable);
-								index = 0;
-								break;
-							end
-						end
-						-- Si la cible visée n'est plus atteinte par un sort lancé [résists]
-						if SpellTimer and (SpellTimer[index].Type == 4 or SpellTimer[index].Type == 5)
-							and SpellTimer[index].Target == UnitName("target")
-							then
-							-- On triche pour laisser le temps au mob de bien sentir qu'il est débuffé ^^
-							if curTime >= ((SpellTimer[index].TimeMax - SpellTimer[index].Time) + 1.5)
-								and SpellTimer[index] ~= 6 then
-								if not Necrosis_UnitHasEffect("target", SpellTimer[index].Name) then
-									SpellTimer, TimerTable = Necrosis_RetraitTimerParIndex(index, SpellTimer, TimerTable);
-									index = 0;
-									break;
-								end
 							end
 						end
 					end
