@@ -23,12 +23,12 @@ NecrosisData.Label = NecrosisData.AppName.." "..NecrosisData.Version.." by "..Ne
 -- Raccourcis claviers
 BINDING_HEADER_NECRO_BIND = "Necrosis";
    
-BINDING_NAME_SOULSTONE = "Pierre d'\195\162me / Soulstone";
-BINDING_NAME_HEALTHSTONE = "Pierre de soins / Healthstone";
-BINDING_NAME_SPELLSTONE = "Pierre de sort / Spellstone";
-BINDING_NAME_FIRESTONE = "Pierre de feu / Firestone";
-BINDING_NAME_STEED = "Monture / Steed";
-BINDING_NAME_WARD = "Gardien de l'ombre / Shadow Ward";
-BINDING_NAME_BANISH = "Bannir / Ban";
-BINDING_NAME_LIFETAP = "Connexion / Life tap";
-BINDING_NAME_REDOCURSE = "Relancer la mal\195\169diction / Recast the last curse";
+BINDING_NAME_SOULSTONE = "Soulstone";
+BINDING_NAME_HEALTHSTONE = "Healthstone";
+BINDING_NAME_SPELLSTONE = "Spellstone";
+BINDING_NAME_FIRESTONE = "Firestone";
+BINDING_NAME_STEED = "Steed";
+BINDING_NAME_WARD = "Shadow Ward";
+BINDING_NAME_BANISH = "Ban";
+BINDING_NAME_LIFETAP = "Life tap";
+BINDING_NAME_REDOCURSE = "Recast the last curse";

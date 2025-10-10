@@ -17,8 +17,6 @@
 -- ENGLISH  VERSION FUNCTIONS --
 ------------------------------------------------
 
-if ( GetLocale() == "enUS" ) or ( GetLocale() == "enGB" ) then
-
 NECROSIS_UNIT_WARLOCK = "Warlock";
 
 NECROSIS_ANTI_FEAR_SPELL = {
@@ -206,5 +204,3 @@ NECROSIS_TRANSLATION = {
 	["SacrificeGain"] = "You gain Sacrifice.",
 	["SummoningRitual"] = "Ritual of Summoning"
 };
-
-end

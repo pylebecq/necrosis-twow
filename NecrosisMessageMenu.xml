@@ -17,7 +17,7 @@
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="NecrosisMessageMenu" relativeFrom="TOPLEFT">
 							<Offset>
-								<AbsDimension x="30" y="-75"/>
+								<AbsDimension x="30" y="-20"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -27,7 +27,7 @@
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="NecrosisMessageMenu" relativeFrom="TOPLEFT">
 							<Offset>
-								<AbsDimension x="60" y="-95"/>
+								<AbsDimension x="60" y="-40"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -37,7 +37,7 @@
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="NecrosisMessageMenu" relativeFrom="TOPLEFT">
 							<Offset>
-								<AbsDimension x="60" y="-115"/>
+								<AbsDimension x="60" y="-60"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -47,7 +47,7 @@
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="NecrosisMessageMenu" relativeFrom="TOPLEFT">
 							<Offset>
-								<AbsDimension x="30" y="-160"/>
+								<AbsDimension x="30" y="-105"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -57,7 +57,7 @@
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="NecrosisMessageMenu" relativeFrom="TOPLEFT">
 							<Offset>
-								<AbsDimension x="60" y="-180"/>
+								<AbsDimension x="60" y="-125"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -67,7 +67,7 @@
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="NecrosisMessageMenu" relativeFrom="TOPLEFT">
 							<Offset>
-								<AbsDimension x="60" y="-200"/>
+								<AbsDimension x="60" y="-145"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -77,7 +77,7 @@
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="NecrosisMessageMenu" relativeFrom="TOPLEFT">
 							<Offset>
-								<AbsDimension x="60" y="-220"/>
+								<AbsDimension x="60" y="-165"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -87,7 +87,7 @@
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="NecrosisMessageMenu" relativeFrom="TOPLEFT">
 							<Offset>
-								<AbsDimension x="60" y="-260"/>
+								<AbsDimension x="60" y="-205"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -97,7 +97,7 @@
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="NecrosisMessageMenu" relativeFrom="TOPLEFT">
 							<Offset>
-								<AbsDimension x="100" y="-280"/>
+								<AbsDimension x="100" y="-225"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -107,7 +107,7 @@
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="NecrosisMessageMenu" relativeFrom="TOPLEFT">
 							<Offset>
-								<AbsDimension x="100" y="-300"/>
+								<AbsDimension x="100" y="-245"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -115,51 +115,6 @@
 			</Layer>
 		</Layers>
 		<Frames>
-		<Slider name="NecrosisLanguage_Slider" inherits="OptionsSliderTemplate" minValue="1" maxValue="3" valueStep="1" virtual="true">
-				<Size>
-					<AbsDimension x="150" y="16"/>
-				</Size>
-				<Anchors>
-					<Anchor point="CENTER" relativeTo="NecrosisMessageMenu" relativeFrom="TOP">
-						<Offset>
-							<AbsDimension x="0" y="180"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-				<OnEnter>
-					GameTooltip:SetOwner(this, "ANCHOR_RIGHT");
-						if (this:GetValue() == 1) then
-							GameTooltip:SetText("Francais");
-						elseif (this:GetValue() == 2) then
-							GameTooltip:SetText("English");
-						else
-							GameTooltip:SetText("Deutsch");
-						end
-					</OnEnter>
-					<OnValueChanged>
-						GameTooltip:SetText(this:GetValue());
-						if (this:GetValue() == 1) then
-							GameTooltip:SetText("Francais");
-							NecrosisConfig.NecrosisLanguage = "frFR";
-							Necrosis_Localization_Dialog_Fr();
-						elseif (this:GetValue() == 2) then
-							GameTooltip:SetText("English");
-							NecrosisConfig.NecrosisLanguage = "enUS";
-							Necrosis_Localization_Dialog_En();
-						else
-							GameTooltip:SetText("Deutsch");
-							NecrosisConfig.NecrosisLanguage = "deDE";
-							Necrosis_Localization_Dialog_De();
-						end
-						Necrosis_LanguageInitialize();
-					</OnValueChanged>
-					<OnLeave>
-						GameTooltip:Hide();
-					</OnLeave>
-				</Scripts>
-			</Slider>
-			
 			<CheckButton name="NecrosisAntiFearAlert_Button" enableMouse="true" inherits="UICheckButtonTemplate" checked="false">
 				<Size>
 					<AbsDimension x="24" y="24"/>
@@ -167,7 +122,7 @@
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="NecrosisMessageMenu" relativeFrom="TOPLEFT">
 						<Offset>
-							<AbsDimension x="30" y="-90"/>
+							<AbsDimension x="30" y="-35"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -188,7 +143,7 @@
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="NecrosisMessageMenu" relativeFrom="TOPLEFT">
 						<Offset>
-							<AbsDimension x="30" y="-110"/>
+							<AbsDimension x="30" y="-55"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -210,7 +165,7 @@
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="NecrosisMessageMenu" relativeFrom="TOPLEFT">
 						<Offset>
-							<AbsDimension x="30" y="-175"/>
+							<AbsDimension x="30" y="-120"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -234,7 +189,7 @@
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="NecrosisMessageMenu" relativeFrom="TOPLEFT">
 						<Offset>
-							<AbsDimension x="30" y="-195"/>
+							<AbsDimension x="30" y="-140"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -255,7 +210,7 @@
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="NecrosisMessageMenu" relativeFrom="TOPLEFT">
 						<Offset>
-							<AbsDimension x="30" y="-215"/>
+							<AbsDimension x="30" y="-160"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -277,7 +232,7 @@
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="NecrosisMessageMenu" relativeFrom="TOPLEFT">
 						<Offset>
-							<AbsDimension x="30" y="-255"/>
+							<AbsDimension x="30" y="-200"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -298,7 +253,7 @@
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="NecrosisMessageMenu" relativeFrom="TOPLEFT">
 						<Offset>
-							<AbsDimension x="70" y="-275"/>
+							<AbsDimension x="70" y="-220"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -319,7 +274,7 @@
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="NecrosisMessageMenu" relativeFrom="TOPLEFT">
 						<Offset>
-							<AbsDimension x="70" y="-295"/>
+							<AbsDimension x="70" y="-240"/>
 						</Offset>
 					</Anchor>
 				</Anchors>

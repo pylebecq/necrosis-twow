@@ -31,7 +31,6 @@ Default_NecrosisConfig = {
 	CurseMenuPos = 34;
 	ChatMsg = true;
 	ChatType = true;
-	NecrosisLanguage = GetLocale();
 	ShowCount = true;
 	CountType = 1;
 	ShadowTranceScale = 100;

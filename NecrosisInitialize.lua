@@ -20,23 +20,6 @@
 function Necrosis_Initialize()
 	
 	Necrosis_Localization_Dialog_En()
-	-- Initilialisation des Textes (VO / VF / VA)
-	--if NecrosisConfig ~= {} then
-	--	if (NecrosisConfig.NecrosisLanguage == "enUS") or (NecrosisConfig.NecrosisLanguage == "enGB") then
-	--		Necrosis_Localization_Dialog_En();
-	--	elseif (NecrosisConfig.NecrosisLanguage == "deDE") then
-	--		Necrosis_Localization_Dialog_De();
-	--	else
-	--		Necrosis_Localization_Dialog_Fr();
-	--	end
-	--elseif GetLocale() == "enUS" or GetLocale() == "enGB" then
-	--	Necrosis_Localization_Dialog_En();
-	--elseif GetLocale() == "deDE" then
-	--	Necrosis_Localization_Dialog_De();
-	--else
-	--	Necrosis_Localization_Dialog_Fr();
-	--end
-
 
 	-- On initialise ! Si le joueur n'est pas Démoniste, on cache Necrosis (chuuuut !)
 	-- On indique aussi que Nécrosis est initialisé maintenant
@@ -124,17 +107,6 @@ function Necrosis_Initialize()
 		NecrosisButtonRotate_SliderLow:SetText("0");
 		NecrosisButtonRotate_SliderHigh:SetText("360");
 		
-		if NecrosisConfig.NecrosisLanguage == "deDE" then
-			NecrosisLanguage_Slider:SetValue(3);
-		elseif NecrosisConfig.NecrosisLanguage == "enUS" then
-			NecrosisLanguage_Slider:SetValue(2);
-		else
-			NecrosisLanguage_Slider:SetValue(1);
-		end
-		NecrosisLanguage_SliderText:SetText("Langue / Language / Sprache");
-		NecrosisLanguage_SliderLow:SetText("");
-		NecrosisLanguage_SliderHigh:SetText("")
-
 		NecrosisBag_Slider:SetValue(4 - NecrosisConfig.SoulshardContainer);
 		NecrosisBag_SliderLow:SetText("5");
 		NecrosisBag_SliderHigh:SetText("1");

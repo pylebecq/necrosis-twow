@@ -4,6 +4,10 @@ This is fork of version 1.5.2a of the Necrosis LdC addon for Turtle WoW server.
 
 ## Changes
 
+### Oct 10, 2025
+
+- Fully removed support for French and German languages.
+
 ### Sep 24, 2025
 
 - Drastically reduced memory allocation in the Necrosis_OnUpdate function.
