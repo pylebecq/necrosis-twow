@@ -1,0 +1,4 @@
+[tools]
+lua = "5.1"
+node = "22.20.0"
+stylua = "2.3"
