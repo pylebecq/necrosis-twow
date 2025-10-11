@@ -182,6 +182,9 @@ function Necrosis_Localization_Dialog_En()
 		["AmplifyCooldown"] = "Right click to amplify curse",
 		["DominationCooldown"] = "Right click for fast summon",
 		["LastSpell"] = "Middle click to cast ",
+		["LastStone"] = {
+			MiddleClick = { "Middle click to create a ", "Middle click to use your " },
+		},
 	}
 
 	NECROSIS_SOUND = {
