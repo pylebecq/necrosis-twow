@@ -8,7 +8,6 @@
 -- Version 01.05.2006-2
 ------------------------------------------------------------------------------------------------------
 
-
 -- Les textes d'invocation du démoniste
 ----------------------------------------
 -- Ici sont rassemblés les textes d'invocation pour le démoniste. Vous pouvez les modifier
@@ -29,7 +28,6 @@
 -- J'espère que les commentaires que j'y ai mis sont compréhensibles
 -- Sinon n'hésitez pas à poster dans le sujet du forum officiel ou écrivez moi (lomig@larmes-cenarius.net)
 
-
 -- Texts for a summoning by a warlock
 --------------------------------------
 -- Here are some summoning speeches for your warlock. You can change them for them to
@@ -40,7 +38,7 @@
 -- The target's name is replaced by <target>
 -- you need to add before the } :
 -- "In few seconds <target> will be able to help us",
--- 
+--
 -- The same thing is available for soulstone messages
 --
 -- As for the demon summoning, it seems to be complicated but it is not
@@ -49,7 +47,6 @@
 -- Thoses speeches can contain several sentences in the chat window, in game
 -- I made notes on the sentences given by example, I hope they are understandable
 -- If not, do not hesistate to mail me (lomig@larmes-cenarius.net)
-
 
 -- Texte für das Ritual der Beschwörung
 ----------------------------------------
@@ -60,7 +57,7 @@
 -- Wenn du schreiben möchtest "In wenigen Sekunden wird 'Spielername' in der Lage sein uns zu helfen"
 -- musst du vor dem }; hinzufügen:
 -- "In wenigen Sekunden wird <target> in der Lage sein uns zu helfen",
--- 
+--
 -- Das gleiche gilt für Seelenstein Nachrichten.
 --
 -- Das Beschwören von Dämonen: Es sieht zwar kompliziert aus, aber es ist nicht kompliziert
@@ -70,13 +67,11 @@
 -- Ich habe einige Anmerkungen bei den Beispielsätzen hinzugefügt, ich hoffe sie sind verständlich
 -- Sollten sie es nicht sein, zögert nicht mich zu kontaktieren (lomig@larmes-cenarius.net)
 
-
 -------------------------------------
 --  ENGLISH VERSION --
 -------------------------------------
 
 function Necrosis_Localization_Speech_En()
-
 	NECROSIS_INVOCATION_MESSAGES = {
 		[1] = {
 			"Arcanum Taxi Cab ! I am summoning <target>, please click on the portal.",
@@ -91,16 +86,16 @@ function Necrosis_Localization_Speech_En()
 		[4] = {
 			"If you do not want a sprawling, phlegm-looking and asthmatic creature to come from this portal, click on it to help <target> find a path in Hell as quick as possible !",
 		},
-	};
+	}
 
 	NECROSIS_SOULSTONE_ALERT_MESSAGE = {
 		[1] = {
 			"If you cherish the idea of a mass suicide, <target> now can self-resurrect, so all should be fine. Go ahead.",
 		},
-		[2]= {
+		[2] = {
 			"<target> can go afk to drink a cup of coffee or so, soulstone is in place to allow for the wipe...",
 		},
-	};
+	}
 
 	NECROSIS_PET_MESSAGE = {
 		-- Imp
@@ -113,7 +108,7 @@ function Necrosis_Localization_Speech_En()
 			[2] = {
 				"<pet>! HEEL ! NOW !",
 			},
-		};
+		},
 		-- Voidwalker
 		[2] = {
 			-- Summon speech 1
@@ -123,60 +118,59 @@ function Necrosis_Localization_Speech_En()
 				-- Second setence in the chat window
 				"<pet>, please help !",
 			},
-		};
+		},
 		-- Succubus
 		[3] = {
 			-- Summon speech 1
 			[1] = {
 				"<pet> baby, please help me sweet heart !",
 			},
-		};
+		},
 		-- Felhunter
 		[4] = {
-			-- Summon speech 1			
+			-- Summon speech 1
 			[1] = {
 				"<pet> ! <pet> ! Come on boy, come here ! <pet> !",
 			},
-		};
+		},
 		-- Sentences for the first summon : When Necrosis do not know the name of your demons yet
 		[5] = {
 			-- Summon speech 1
 			[1] = {
 				-- First sentence in the chat window
 				"Fishing ? Yes I love fishing... Look !",
-				-- Second sentence in the chat window				
+				-- Second sentence in the chat window
 				"I close my eyes, I move my fingers like that... And voila ! Yes, yes, it is a fish, I can swear you !",
 			},
-			-- Summon speech 2			
+			-- Summon speech 2
 			[2] = {
-				-- First sentence in the chat window				
+				-- First sentence in the chat window
 				"Anyway I hate you all ! I don't need you, I have friends.... Powerful friends !",
-				-- Second sentence in the chat window				
+				-- Second sentence in the chat window
 				"COME TO ME, CREATURE OF HELL AND NIGHTMARE !",
 			},
-		};
+		},
 		-- Sentences for the stead summon
 		[6] = {
-			-- Summon speech 1	
+			-- Summon speech 1
 			[1] = {
 				-- First sentence in the chat window
 				"Hey, I'm late ! Let's find a horse that roxes !",
 			},
-			-- Summon speech 2	
+			-- Summon speech 2
 			[2] = {
 				-- First sentence in the chat window
 				"I am summoning a stead from nightmare !",
 				-- Second sentence in the chat window
 				"AH AHA HA HA AH AH !",
 			},
-		};
-	};
-	
-	NECROSIS_SHORT_MESSAGES = {
-		{{"--> <target> is soulstoned for 30 minutes <--"}},
-		{{"<TP> Summoning <target>, please click on the portal <TP>"}},
-	};
+		},
+	}
 
+	NECROSIS_SHORT_MESSAGES = {
+		{ { "--> <target> is soulstoned for 30 minutes <--" } },
+		{ { "<TP> Summoning <target>, please click on the portal <TP>" } },
+	}
 end
 
 -- Pour les caractères spéciaux :

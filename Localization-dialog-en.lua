@@ -4,39 +4,37 @@
 -- Créateur initial (US) : Infernal (http://www.revolvus.com/games/interface/necrosis/)
 -- Implémentation de base (FR) : Tilienna Thorondor
 -- Reprise du projet : Lomig & Nyx des Larmes de Cenarius, Kael'Thas
--- 
+--
 -- Skins et voix Françaises : Eliah, Ner'zhul
 -- Version Allemande par Arne Meier et Halisstra, Lothar
 -- Remerciements spéciaux pour Sadyre (JoL)
 -- Version 06.05.2006-1
 ------------------------------------------------------------------------------------------------------
 
-
 ------------------------------------------------
 -- ENGLISH  VERSION TEXTS --
 ------------------------------------------------
 
 function Necrosis_Localization_Dialog_En()
-
 	function NecrosisLocalization()
-		Necrosis_Localization_Speech_En();
+		Necrosis_Localization_Speech_En()
 	end
 
 	NECROSIS_COOLDOWN = {
 		["Spellstone"] = "Spellstone Cooldown",
-		["Healthstone"] = "Healthstone Cooldown"
-	};
+		["Healthstone"] = "Healthstone Cooldown",
+	}
 
 	NecrosisTooltipData = {
 		["Main"] = {
 			Label = "|c00FFFFFFNecrosis|r",
 			Stone = {
-				[true] = "Yes";
-				[false] = "No";
+				[true] = "Yes",
+				[false] = "No",
 			},
 			Hellspawn = {
-				[true] = "On";
-				[false] = "Off";
+				[true] = "On",
+				[false] = "Off",
 			},
 			["Soulshard"] = "Soul Shard(s) : ",
 			["InfernalStone"] = "Infernal Stone(s) : ",
@@ -51,155 +49,152 @@ function Necrosis_Localization_Dialog_En()
 		},
 		["Soulstone"] = {
 			Label = "|c00FF99FFSoulstone|r",
-			Text = {"Create","Use","Used","Waiting"}
+			Text = { "Create", "Use", "Used", "Waiting" },
 		},
 		["Healthstone"] = {
 			Label = "|c0066FF33Healthstone|r",
-			Text = {"Create","Use"}
+			Text = { "Create", "Use" },
 		},
 		["Spellstone"] = {
 			Label = "|c0099CCFFSpellstone|r",
-			Text = {"Create","Use"}
+			Text = { "Create", "Use" },
 		},
 		["Firestone"] = {
 			Label = "|c00FF4444Firestone|r",
-			Text = {"Create","Use"}
+			Text = { "Create", "Use" },
 		},
 		["Felstone"] = {
 			Label = "|c006DF624Felstone|r",
-			Text = {"Create","Use"}
+			Text = { "Create", "Use" },
 		},
 		["Wrathstone"] = {
 			Label = "|c00F6249BWrathstone|r",
-			Text = {"Create","Use"}
+			Text = { "Create", "Use" },
 		},
 		["Voidstone"] = {
 			Label = "|c008024F6Voidstone|r",
-			Text = {"Create","Use"}
+			Text = { "Create", "Use" },
 		},
 		["SpellTimer"] = {
 			Label = "|c00FFFFFFSpell Durations|r",
 			Text = "Active Spells on the target",
-			Right = "Right Click for Hearthstone to "
+			Right = "Right Click for Hearthstone to ",
 		},
 		["ShadowTrance"] = {
-			Label = "|c00FFFFFFShadow Transe|r"
+			Label = "|c00FFFFFFShadow Transe|r",
 		},
 		["Domination"] = {
-			Label = "|c00FFFFFFFel Domination|r"
+			Label = "|c00FFFFFFFel Domination|r",
 		},
 		["Enslave"] = {
-			Label = "|c00FFFFFFEnslave|r"
+			Label = "|c00FFFFFFEnslave|r",
 		},
 		["Armor"] = {
-			Label = "|c00FFFFFFDemon Armor|r"
+			Label = "|c00FFFFFFDemon Armor|r",
 		},
 		["Invisible"] = {
-			Label = "|c00FFFFFFDetect Invisibility|r"
+			Label = "|c00FFFFFFDetect Invisibility|r",
 		},
 		["Aqua"] = {
-			Label = "|c00FFFFFFUnending Breath|r"
+			Label = "|c00FFFFFFUnending Breath|r",
 		},
 		["Kilrogg"] = {
-			Label = "|c00FFFFFFEye of Kilrogg|r"
+			Label = "|c00FFFFFFEye of Kilrogg|r",
 		},
 		["Banish"] = {
-			Label = "|c00FFFFFFBanish|r"
+			Label = "|c00FFFFFFBanish|r",
 		},
 		["TP"] = {
-			Label = "|c00FFFFFFRitual of Summoning|r"
+			Label = "|c00FFFFFFRitual of Summoning|r",
 		},
 		["SoulLink"] = {
-			Label = "|c00FFFFFFSoul Link|r"
+			Label = "|c00FFFFFFSoul Link|r",
 		},
 		["ShadowProtection"] = {
-			Label = "|c00FFFFFFShadow Ward|r"
+			Label = "|c00FFFFFFShadow Ward|r",
 		},
 		["Imp"] = {
-			Label = "|c00FFFFFFImp|r"
+			Label = "|c00FFFFFFImp|r",
 		},
 		["Void"] = {
-			Label = "|c00FFFFFFVoidwalker|r"
+			Label = "|c00FFFFFFVoidwalker|r",
 		},
 		["Succubus"] = {
-			Label = "|c00FFFFFFSuccubus|r"
+			Label = "|c00FFFFFFSuccubus|r",
 		},
 		["Fel"] = {
-			Label = "|c00FFFFFFFelhunter|r"
+			Label = "|c00FFFFFFFelhunter|r",
 		},
 		["Infernal"] = {
-			Label = "|c00FFFFFFInferno|r"
+			Label = "|c00FFFFFFInferno|r",
 		},
 		["Doomguard"] = {
-			Label = "|c00FFFFFFDoomguard|r"
+			Label = "|c00FFFFFFDoomguard|r",
 		},
 		["Sacrifice"] = {
-			Label = "|c00FFFFFFDemonic sacrifice|r"
+			Label = "|c00FFFFFFDemonic sacrifice|r",
 		},
 		["Amplify"] = {
-			Label = "|c00FFFFFFAmplify Curse|r"
+			Label = "|c00FFFFFFAmplify Curse|r",
 		},
 		["Weakness"] = {
-			Label = "|c00FFFFFFCurse of Weakness|r"
+			Label = "|c00FFFFFFCurse of Weakness|r",
 		},
 		["Agony"] = {
-			Label = "|c00FFFFFFCurse of Agony|r"
+			Label = "|c00FFFFFFCurse of Agony|r",
 		},
 		["Reckless"] = {
-			Label = "|c00FFFFFFCurse of Recklessness|r"
+			Label = "|c00FFFFFFCurse of Recklessness|r",
 		},
 		["Tongues"] = {
-			Label = "|c00FFFFFFCurse of Tongues|r"
+			Label = "|c00FFFFFFCurse of Tongues|r",
 		},
 		["Exhaust"] = {
-			Label = "|c00FFFFFFCurse of Exhaustion|r"
+			Label = "|c00FFFFFFCurse of Exhaustion|r",
 		},
 		["Elements"] = {
-			Label = "|c00FFFFFFCurse of Elements|r"
+			Label = "|c00FFFFFFCurse of Elements|r",
 		},
 		["Shadow"] = {
-			Label = "|c00FFFFFFCurse of Shadow|r"
+			Label = "|c00FFFFFFCurse of Shadow|r",
 		},
 		["Doom"] = {
-			Label = "|c00FFFFFFCurse of Doom|r"
+			Label = "|c00FFFFFFCurse of Doom|r",
 		},
 		["Mount"] = {
-			Label = "|c00FFFFFFSteed|r"
+			Label = "|c00FFFFFFSteed|r",
 		},
 		["Buff"] = {
-			Label = "|c00FFFFFFSpell Menu|r\nRight click to keep the menu open"
+			Label = "|c00FFFFFFSpell Menu|r\nRight click to keep the menu open",
 		},
 		["Pet"] = {
-			Label = "|c00FFFFFFDemon Menu|r\nRight click to keep the menu open"
+			Label = "|c00FFFFFFDemon Menu|r\nRight click to keep the menu open",
 		},
 		["Curse"] = {
-			Label = "|c00FFFFFFCurse Menu|r\nRight click to keep the menu open"
+			Label = "|c00FFFFFFCurse Menu|r\nRight click to keep the menu open",
 		},
 		["StoneMenu"] = {
-			Label = "|c00FFFFFFStones Menu|r\nRight click to keep the menu open"
+			Label = "|c00FFFFFFStones Menu|r\nRight click to keep the menu open",
 		},
 		["Radar"] = {
-			Label = "|c00FFFFFFSense Demons|r"
+			Label = "|c00FFFFFFSense Demons|r",
 		},
 		["AmplifyCooldown"] = "Right click to amplify curse",
 		["DominationCooldown"] = "Right click for fast summon",
 		["LastSpell"] = "Middle click to cast ",
-	};
-
+	}
 
 	NECROSIS_SOUND = {
 		["Fear"] = "Interface\\AddOns\\Necrosis\\sounds\\Fear-En.mp3",
 		["SoulstoneEnd"] = "Interface\\AddOns\\Necrosis\\sounds\\SoulstoneEnd-En.mp3",
 		["EnslaveEnd"] = "Interface\\AddOns\\Necrosis\\sounds\\EnslaveDemonEnd-En.mp3",
-		["ShadowTrance"] = "Interface\\AddOns\\Necrosis\\sounds\\ShadowTrance-En.mp3"
-	};
-
+		["ShadowTrance"] = "Interface\\AddOns\\Necrosis\\sounds\\ShadowTrance-En.mp3",
+	}
 
 	NECROSIS_NIGHTFALL_TEXT = {
 		["NoBoltSpell"] = "You do not seem to have any Shadow Bolt Spell.",
-		["Message"] = "<white>S<lightPurple1>h<lightPurple2>a<purple>d<darkPurple1>o<darkPurple2>w T<darkPurple1>r<purple>a<lightPurple2>n<lightPurple1>c<white>e"
-	};
-
+		["Message"] = "<white>S<lightPurple1>h<lightPurple2>a<purple>d<darkPurple1>o<darkPurple2>w T<darkPurple1>r<purple>a<lightPurple2>n<lightPurple1>c<white>e",
+	}
 
 	NECROSIS_MESSAGE = {
 		["Error"] = {
@@ -219,38 +214,37 @@ function Necrosis_Localization_Dialog_En()
 			["WrongBag"] = "Error : The number must be between 0 and 4.",
 			["BagIsNumber"] = "Error : Please type a number.",
 			["NoHearthStone"] = "Error : You do not have a Hearthstone in your inventory",
-			["SpellStoneIsOnCooldown"] = "Error : Your Spellstone is on cooldown"
+			["SpellStoneIsOnCooldown"] = "Error : Your Spellstone is on cooldown",
 		},
 		["Bag"] = {
 			["FullPrefix"] = "Your ",
 			["FullSuffix"] = " is full !",
 			["FullDestroySuffix"] = " is full; Next shards will be destroyed !",
 			["SelectedPrefix"] = "You have chosen your ",
-			["SelectedSuffix"] = " to keep your shards."
+			["SelectedSuffix"] = " to keep your shards.",
 		},
 		["Interface"] = {
 			["Welcome"] = "<white>/necro to show the setting menu !",
-			["TooltipOn"] = "Tooltips turned on" ,
+			["TooltipOn"] = "Tooltips turned on",
 			["TooltipOff"] = "Tooltips turned off",
 			["MessageOn"] = "Chat messaging turned on",
 			["MessageOff"] = "Chat messaging turned off",
 			["MessagePosition"] = "<- System messages by Necrosis will appear here ->",
 			["DefaultConfig"] = "<lightYellow>Default configuration loaded.",
-			["UserConfig"] = "<lightYellow>Configuration loaded."
+			["UserConfig"] = "<lightYellow>Configuration loaded.",
 		},
 		["Help"] = {
 			"/necro recall -- Center Necrosis and all buttons in the middle of the screen",
-			"/necro sm -- Replace Soulstoning and summoning messages with a short raid-ready version"
+			"/necro sm -- Replace Soulstoning and summoning messages with a short raid-ready version",
 		},
 		["EquipMessage"] = "Equip ",
 		["SwitchMessage"] = " instead of ",
 		["Information"] = {
 			["FearProtect"] = "Your target has got a fear protection !!!!",
 			["EnslaveBreak"] = "Your demon broke his chains...",
-			["SoulstoneEnd"] = "<lightYellow>Your Soulstone has faded."
-		}
-	};
-
+			["SoulstoneEnd"] = "<lightYellow>Your Soulstone has faded.",
+		},
+	}
 
 	-- Gestion XML - Menu de configuration
 
@@ -260,9 +254,9 @@ function Necrosis_Localization_Dialog_En()
 		["Pink"] = "Pink",
 		["Orange"] = "Orange",
 		["Turquoise"] = "Turquoise",
-		["X"] = "X"
-	};
-	
+		["X"] = "X",
+	}
+
 	NECROSIS_CONFIGURATION = {
 		["Menu1"] = "Shard Settings",
 		["Menu2"] = "Message Settings",
@@ -282,7 +276,7 @@ function Necrosis_Localization_Dialog_En()
 		["TranseWarning"] = "Alert me when I enter a Trance State",
 		["SpellTime"] = "Turn on the spell durations indicator",
 		["AntiFearWarning"] = "Warn me when my target cannot be feared.",
-		["GraphicalTimer"] = "Show graphical instead text timers",	
+		["GraphicalTimer"] = "Show graphical instead text timers",
 		["TranceButtonView"] = "Let me see hidden buttons to drag them.",
 		["ButtonLock"] = "Lock the buttons around the Necrosis Sphere.",
 		["MainLock"] = "Lock buttons and the Necrosis Sphere.",
@@ -314,13 +308,12 @@ function Necrosis_Localization_Dialog_En()
 			["Curse"] = "Show Curse menu button",
 			["Demon"] = "Show Demon menu button",
 			["StoneMenu"] = "Show Stone menu button",
-			["Tooltips"] = "Show tooltips"
+			["Tooltips"] = "Show tooltips",
 		},
 		["Count"] = {
 			["Shard"] = "Soulshards",
 			["Inferno"] = "Demon summoning stones",
-			["Rez"] = "Resurrection Timer"
-		}
-	};
-
+			["Rez"] = "Resurrection Timer",
+		},
+	}
 end
