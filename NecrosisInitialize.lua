@@ -14,6 +14,22 @@
 
 
 ------------------------------------------------------------------------------------------------------
+-- DEEP MERGE FUNCTION FOR CONFIG
+------------------------------------------------------------------------------------------------------
+function Necrosis_DeepMerge(source, target)
+	for k, v in pairs(source) do
+		if target[k] == nil then
+			-- Target doesn't have this key, copy from source
+			target[k] = v
+		elseif type(v) == "table" and type(target[k]) == "table" then
+			-- Both are tables, recurse
+			Necrosis_DeepMerge(v, target[k])
+		end
+		-- If target has the key and it's not both tables, keep target's value
+	end
+end
+
+------------------------------------------------------------------------------------------------------
 -- FONCTION D'INITIALISATION
 ------------------------------------------------------------------------------------------------------
 
@@ -31,7 +47,7 @@ function Necrosis_Initialize()
 		HideUIPanel(NecrosisBuffMenuButton);
 		HideUIPanel(NecrosisCurseMenuButton);
 		HideUIPanel(NecrosisMountButton);
-		HideUIPanel(NecrosisFirestoneButton);
+		HideUIPanel(NecrosisStoneMenuButton);
 		HideUIPanel(NecrosisSpellstoneButton);
 		HideUIPanel(NecrosisHealthstoneButton);
 		HideUIPanel(NecrosisSoulstoneButton);
@@ -39,8 +55,8 @@ function Necrosis_Initialize()
 		HideUIPanel(NecrosisShadowTranceButton);
 	else
 		-- On charge (ou on crée) la configuration pour le joueur et on l'affiche sur la console
-		if NecrosisConfig == nil or NecrosisConfig.Version ~= Default_NecrosisConfig.Version then
-			NecrosisConfig = {};
+		if NecrosisConfig == nil then
+			-- Fresh install: use defaults
 			NecrosisConfig = Default_NecrosisConfig;
 			Necrosis_Msg(NECROSIS_MESSAGE.Interface.DefaultConfig, "USER");
 			NecrosisButton:ClearAllPoints();
@@ -51,8 +67,14 @@ function Necrosis_Initialize()
 			NecrosisShadowTranceButton:SetPoint("CENTER", "UIParent", "CENTER",100,-30);
 			NecrosisAntiFearButton:SetPoint("CENTER", "UIParent", "CENTER",100,30);
 			NecrosisSpellTimerButton:SetPoint("CENTER", "UIParent", "CENTER",120,340);
-
 		else
+			-- Existing config: deep merge defaults into it to add any missing keys
+			Necrosis_DeepMerge(Default_NecrosisConfig, NecrosisConfig);
+
+			if NecrosisConfig.Version ~= Default_NecrosisConfig.Version then
+				NecrosisConfig.Version = Default_NecrosisConfig.Version;
+			end
+
 			Necrosis_Msg(NECROSIS_MESSAGE.Interface.UserConfig, "USER");
 		end
 	
@@ -78,7 +100,7 @@ function Necrosis_Initialize()
 		if (NecrosisConfig.ShowSpellTimers) then NecrosisShowSpellTimers_Button:SetChecked(1); end
 		if (NecrosisConfig.AntiFearAlert) then NecrosisAntiFearAlert_Button:SetChecked(1); end
 		if (NecrosisConfig.NecrosisLockServ) then NecrosisIconsLock_Button:SetChecked(1); end
-		if (NecrosisConfig.StonePosition[1]) then NecrosisShowFirestone_Button:SetChecked(1); end
+		if (NecrosisConfig.StonePosition[1]) then NecrosisShowStoneMenu_Button:SetChecked(1); end
 		if (NecrosisConfig.StonePosition[2]) then NecrosisShowSpellstone_Button:SetChecked(1); end
 		if (NecrosisConfig.StonePosition[3]) then NecrosisShowHealthStone_Button:SetChecked(1); end
 		if (NecrosisConfig.StonePosition[4]) then NecrosisShowSoulstone_Button:SetChecked(1); end
@@ -92,6 +114,7 @@ function Necrosis_Initialize()
 		if (NecrosisConfig.BuffMenuPos == -34) then NecrosisBuffMenu_Button:SetChecked(1); end
 		if (NecrosisConfig.PetMenuPos == -34) then NecrosisPetMenu_Button:SetChecked(1); end
 		if (NecrosisConfig.CurseMenuPos == -34) then NecrosisCurseMenu_Button:SetChecked(1); end
+		if (NecrosisConfig.StoneMenuPos == -34) then NecrosisStoneMenu_Button:SetChecked(1); end
 		if (NecrosisConfig.NoDragAll) then NecrosisLock_Button:SetChecked(1); end
 		if (NecrosisConfig.SpellTimerPos == -1) then NecrosisSTimer_Button:SetChecked(1); end
 		if (NecrosisConfig.ChatMsg) then NecrosisShowMessage_Button:SetChecked(1); end
@@ -223,8 +246,6 @@ function Necrosis_LanguageInitialize()
 		
 	NecrosisShowTrance_Option:SetText(NECROSIS_CONFIGURATION.TranceButtonView);
 	NecrosisIconsLock_Option:SetText(NECROSIS_CONFIGURATION.ButtonLock);
-		
-	NecrosisShowFirestone_Option:SetText(NECROSIS_CONFIGURATION.Show.Firestone);
 	NecrosisShowSpellstone_Option:SetText(NECROSIS_CONFIGURATION.Show.Spellstone);
 	NecrosisShowHealthStone_Option:SetText(NECROSIS_CONFIGURATION.Show.Healthstone);
 	NecrosisShowSoulstone_Option:SetText(NECROSIS_CONFIGURATION.Show.Soulstone);
@@ -232,6 +253,7 @@ function Necrosis_LanguageInitialize()
 	NecrosisShowBuffMenu_Option:SetText(NECROSIS_CONFIGURATION.Show.Buff);
 	NecrosisShowPetMenu_Option:SetText(NECROSIS_CONFIGURATION.Show.Demon);
 	NecrosisShowCurseMenu_Option:SetText(NECROSIS_CONFIGURATION.Show.Curse);
+	NecrosisShowStoneMenu_Option:SetText(NECROSIS_CONFIGURATION.Show.StoneMenu);
 	NecrosisShowTooltips_Option:SetText(NECROSIS_CONFIGURATION.Show.Tooltips);
 
 	NecrosisShowSpellTimers_Option:SetText(NECROSIS_CONFIGURATION.SpellTime);
@@ -244,6 +266,7 @@ function Necrosis_LanguageInitialize()
 	NecrosisBuffMenu_Option:SetText(NECROSIS_CONFIGURATION.BuffMenu);
 	NecrosisPetMenu_Option:SetText(NECROSIS_CONFIGURATION.PetMenu);
 	NecrosisCurseMenu_Option:SetText(NECROSIS_CONFIGURATION.CurseMenu);
+	NecrosisStoneMenu_Option:SetText(NECROSIS_CONFIGURATION.StoneMenu);
 	NecrosisShowCount_Option:SetText(NECROSIS_CONFIGURATION.ShowCount);
 	NecrosisSTimer_Option:SetText(NECROSIS_CONFIGURATION.STimerLeft);
 

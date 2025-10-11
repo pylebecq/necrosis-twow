@@ -12,7 +12,7 @@
 		</HitRectInsets>
 		<Layers>
 			<Layer level="ARTWORK">
-				<FontString name="NecrosisShowFirestone_Option" inherits="GameFontNormalSmall">
+				<FontString name="NecrosisShowStoneMenu_Option" inherits="GameFontNormalSmall">
 					<Color r="1.0" g="1.0" b="1.0" a="1"/>
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="NecrosisButtonMenu" relativeFrom="TOPLEFT">
@@ -128,7 +128,7 @@
 					</OnLeave>
 				</Scripts>
 			</Slider>
-			<CheckButton name="NecrosisShowFirestone_Button" enableMouse="true" inherits="UICheckButtonTemplate" checked="false">
+			<CheckButton name="NecrosisShowStoneMenu_Button" enableMouse="true" inherits="UICheckButtonTemplate" checked="false">
 				<Size>
 					<AbsDimension x="24" y="24"/>
 				</Size>
@@ -143,9 +143,12 @@
 					<OnClick>
 						if (this:GetChecked()) then
 							NecrosisConfig.StonePosition[1] = true;
-							ShowUIPanel(NecrosisFirestoneButton);
+							if StoneMenuCreate ~= {} then
+								ShowUIPanel(NecrosisStoneMenuButton);
+							end
 						else
 							NecrosisConfig.StonePosition[1] = false;
+							HideUIPanel(NecrosisStoneMenuButton);
 						end
 						Necrosis_UpdateButtonsScale();
 					</OnClick>

@@ -155,12 +155,15 @@ NECROSIS_ITEM = {
 	["Healthstone"] = "Healthstone",
 	["Spellstone"] = "Spellstone",
 	["Firestone"] = "Firestone",
+	["Felstone"] = "Felstone",
+	["Wrathstone"] = "Wrathstone",
+	["Voidstone"] = "Voidstone",
 	["Offhand"] = "Held In Off-hand",
 	["Twohand"] = "Two-Hand",
 	["InfernalStone"] = "Infernal Stone",
 	["DemoniacStone"] = "Demonic Figurine",
 	["Hearthstone"] = "Hearthstone",
-	["SoulPouch"] = {"Soul Pouch", "Felcloth Bag", "Core Felcloth Bag"}	
+	["SoulPouch"] = {"Soul Pouch", "Felcloth Bag", "Core Felcloth Bag"}
 };
 
 
@@ -181,7 +184,10 @@ NECROSIS_CREATE = {
 	[1] = "Create Soulstone",
 	[2] = "Create Healthstone",
 	[3] = "Create Spellstone",
-	[4] = "Create Firestone"
+	[4] = "Create Firestone",
+	[5] = "Create Felstone",
+	[6] = "Create Wrathstone",
+	[7] = "Create Voidstone"
 };
 
 NECROSIS_PET_LOCAL_NAME = {

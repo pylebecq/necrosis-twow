@@ -252,7 +252,7 @@
 		<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
 	</Button>
 
-	<Button name="NecrosisFirestoneButton" hidden="false" enableMouse="true"  toplevel="true" parent="UIParent" movable="true">
+	<Button name="NecrosisStoneMenuButton" hidden="false" enableMouse="true"  toplevel="true" parent="UIParent" movable="true">
 		<Size>
 			<AbsDimension x="34" y="34"/>
 		</Size>
@@ -266,17 +266,17 @@
 		<Scripts>
 			<OnLoad>
 				this:RegisterForDrag("LeftButton");
-				this:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+				this:RegisterForClicks("LeftButtonUp", "MiddleButtonUp", "RightButtonUp");
 				HideUIPanel(this);
 			</OnLoad>
 			<OnEnter>
-				Necrosis_BuildTooltip(this, "Firestone", "ANCHOR_LEFT");
+				Necrosis_BuildTooltip(this, "StoneMenu", "ANCHOR_RIGHT");
 			</OnEnter>
 			<OnLeave>
 				GameTooltip:Hide();
 			</OnLeave>
 			<OnClick>
-				Necrosis_UseItem("Firestone", arg1);
+				Necrosis_StoneMenu(arg1);
 			</OnClick>
 			<OnDragStart>
 				if not NecrosisLockServ then Necrosis_OnDragStart(this); end
@@ -289,7 +289,124 @@
 			</OnMouseUp>
 		</Scripts>
 		<NormalTexture file="Interface\AddOns\Necrosis\UI\FirestoneButton-01"/>
-		<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+		<HighlightTexture file="Interface\AddOns\Necrosis\UI\FirestoneButton-03"/>
+	</Button>
+
+	<Button name="NecrosisStoneMenu1" hidden="false" enableMouse="true"  toplevel="true" parent="UIParent" movable="true">
+		<Size>
+			<AbsDimension x="40" y="40"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" relativeTo="UIParent" relativePoint="CENTER">
+				<Offset>
+					<AbsDimension x="17" y="-100"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				this:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+				HideUIPanel(NecrosisStoneMenu1);
+			</OnLoad>
+			<OnEnter>
+				Necrosis_BuildTooltip(this, "Firestone", "ANCHOR_RIGHT");
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+			<OnClick>
+				Necrosis_UseStone("Firestone", arg1);
+			</OnClick>
+		</Scripts>
+		<NormalTexture file="Interface\AddOns\Necrosis\UI\FirestoneButton-01"/>
+		<HighlightTexture file="Interface\AddOns\Necrosis\UI\FirestoneButton-03"/>
+	</Button>
+	<Button name="NecrosisStoneMenu2" hidden="false" enableMouse="true"  toplevel="true" parent="UIParent" movable="true">
+		<Size>
+			<AbsDimension x="40" y="40"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" relativeTo="UIParent" relativePoint="CENTER">
+				<Offset>
+					<AbsDimension x="17" y="-100"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				this:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+				HideUIPanel(NecrosisStoneMenu2);
+			</OnLoad>
+			<OnEnter>
+				Necrosis_BuildTooltip(this, "Felstone", "ANCHOR_RIGHT");
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+			<OnClick>
+				Necrosis_UseStone("Felstone", arg1);
+			</OnClick>
+		</Scripts>
+		<NormalTexture file="Interface\AddOns\Necrosis\UI\FelstoneButton-01"/>
+		<HighlightTexture file="Interface\AddOns\Necrosis\UI\FelstoneButton-03"/>
+	</Button>
+	<Button name="NecrosisStoneMenu3" hidden="false" enableMouse="true"  toplevel="true" parent="UIParent" movable="true">
+		<Size>
+			<AbsDimension x="40" y="40"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" relativeTo="UIParent" relativePoint="CENTER">
+				<Offset>
+					<AbsDimension x="17" y="-100"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				this:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+				HideUIPanel(NecrosisStoneMenu3);
+			</OnLoad>
+			<OnEnter>
+				Necrosis_BuildTooltip(this, "Wrathstone", "ANCHOR_RIGHT");
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+			<OnClick>
+				Necrosis_UseStone("Wrathstone", arg1);
+			</OnClick>
+		</Scripts>
+		<NormalTexture file="Interface\AddOns\Necrosis\UI\WrathstoneButton-01"/>
+		<HighlightTexture file="Interface\AddOns\Necrosis\UI\WrathstoneButton-03"/>
+	</Button>
+	<Button name="NecrosisStoneMenu4" hidden="false" enableMouse="true"  toplevel="true" parent="UIParent" movable="true">
+		<Size>
+			<AbsDimension x="40" y="40"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" relativeTo="UIParent" relativePoint="CENTER">
+				<Offset>
+					<AbsDimension x="17" y="-100"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				this:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+				HideUIPanel(NecrosisStoneMenu4);
+			</OnLoad>
+			<OnEnter>
+				Necrosis_BuildTooltip(this, "Voidstone", "ANCHOR_RIGHT");
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+			<OnClick>
+				Necrosis_UseStone("Voidstone", arg1);
+			</OnClick>
+		</Scripts>
+		<NormalTexture file="Interface\AddOns\Necrosis\UI\VoidstoneButton-01"/>
+		<HighlightTexture file="Interface\AddOns\Necrosis\UI\VoidstoneButton-03"/>
 	</Button>
 	
 	<Button name="NecrosisMountButton" hidden="false" enableMouse="true"  toplevel="true" parent="UIParent" movable="true">

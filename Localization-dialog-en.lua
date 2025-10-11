@@ -65,6 +65,18 @@ function Necrosis_Localization_Dialog_En()
 			Label = "|c00FF4444Firestone|r",
 			Text = {"Create","Use"}
 		},
+		["Felstone"] = {
+			Label = "|c006DF624Felstone|r",
+			Text = {"Create","Use"}
+		},
+		["Wrathstone"] = {
+			Label = "|c00F6249BWrathstone|r",
+			Text = {"Create","Use"}
+		},
+		["Voidstone"] = {
+			Label = "|c008024F6Voidstone|r",
+			Text = {"Create","Use"}
+		},
 		["SpellTimer"] = {
 			Label = "|c00FFFFFFSpell Durations|r",
 			Text = "Active Spells on the target",
@@ -163,6 +175,9 @@ function Necrosis_Localization_Dialog_En()
 		["Curse"] = {
 			Label = "|c00FFFFFFCurse Menu|r\nRight click to keep the menu open"
 		},
+		["StoneMenu"] = {
+			Label = "|c00FFFFFFStones Menu|r\nRight click to keep the menu open"
+		},
 		["Radar"] = {
 			Label = "|c00FFFFFFSense Demons|r"
 		},
@@ -193,6 +208,9 @@ function Necrosis_Localization_Dialog_En()
 			["DemoniacStoneNotPresent"] = "You need a Demoniac Figurine to do that !",
 			["NoRiding"] = "You do not have any Steed to ride !",
 			["NoFireStoneSpell"] = "You do not have any Firestone creation spell",
+			["NoFelStoneSpell"] = "You do not have any Felstone creation spell",
+			["NoWrathStoneSpell"] = "You do not have any Wrathstone creation spell",
+			["NoVoidStoneSpell"] = "You do not have any Voidstone creation spell",
 			["NoSpellStoneSpell"] = "You do not have any Spellstone creation spell",
 			["NoHealthStoneSpell"] = "You do not have any Healthstone creation spell",
 			["NoSoulStoneSpell"] = "You do not have any Soulstone creation spell",
@@ -272,6 +290,7 @@ function Necrosis_Localization_Dialog_En()
 		["BuffMenu"] = "Put buff menu on the left",
 		["PetMenu"] = "Put pet menu on the left",
 		["CurseMenu"] = "Put curse menu on the left",
+		["StoneMenu"] = "Put stone menu on the left",
 		["STimerLeft"] = "Show timers on the left side of the button",
 		["ShowCount"] = "Show the Shard count in Necrosis",
 		["CountType"] = "Stone type counted",
@@ -294,6 +313,7 @@ function Necrosis_Localization_Dialog_En()
 			["Buff"] = "Show Spell menu button",
 			["Curse"] = "Show Curse menu button",
 			["Demon"] = "Show Demon menu button",
+			["StoneMenu"] = "Show Stone menu button",
 			["Tooltips"] = "Show tooltips"
 		},
 		["Count"] = {
