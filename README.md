@@ -4,6 +4,10 @@ This is fork of version 1.5.2a of the Necrosis LdC addon for Turtle WoW server.
 
 ## Changes
 
+### Oct 11, 2025
+
+- Fix a repeating error being displayed when using a Soulstone, Spellstone, or Healthstone, when graphical timers are enabled
+
 ### Oct 10, 2025
 
 - Fully removed support for French and German languages.

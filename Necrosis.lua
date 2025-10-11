@@ -81,20 +81,6 @@ local SpellGroup = {
 	Visible = {true, true, true}
 };
 
--- Clears contents but preserves subtable objects
-local function clear_tables(t)
-    for k, v in pairs(t) do
-        if type(v) == "table" then
-            -- recurse: empty the subtable
-            clear_tables(v)
-        else
-            -- remove only non-table values
-            t[k] = nil
-        end
-    end
-end
-
-
 -- Reusable buffers for graphical timers (avoid per-frame allocations)
 local GraphicalTimer = {
   texte  = {},
@@ -104,6 +90,29 @@ local GraphicalTimer = {
   temps  = {},
   Gtimer = {},
 }
+
+-- Clears GraphicalTimer arrays for reuse
+local function ClearGraphicalTimers()
+	-- Remove all elements from each array to properly reset their lengths
+	while table.getn(GraphicalTimer.texte) > 0 do
+		table.remove(GraphicalTimer.texte)
+	end
+	while table.getn(GraphicalTimer.TimeMax) > 0 do
+		table.remove(GraphicalTimer.TimeMax)
+	end
+	while table.getn(GraphicalTimer.Time) > 0 do
+		table.remove(GraphicalTimer.Time)
+	end
+	while table.getn(GraphicalTimer.titre) > 0 do
+		table.remove(GraphicalTimer.titre)
+	end
+	while table.getn(GraphicalTimer.temps) > 0 do
+		table.remove(GraphicalTimer.temps)
+	end
+	while table.getn(GraphicalTimer.Gtimer) > 0 do
+		table.remove(GraphicalTimer.Gtimer)
+	end
+end
 
 local TimerTable = {};
 for i = 1, 50, 1 do
@@ -496,7 +505,7 @@ function Necrosis_OnUpdate()
 	-- Parcours du tableau des Timers
 	if SpellTimer then
 		if update then
-			clear_tables(GraphicalTimer);
+			ClearGraphicalTimers();
 			textTimersDisplay = "";
 			for index = 1, table.getn(SpellTimer), 1 do
 				if SpellTimer[index] then
