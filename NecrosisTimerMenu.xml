@@ -137,7 +137,7 @@
 				</Anchors>
 				<Scripts>
 					<OnClick>
-						NecrosisConfig.Graphical = this:GetChecked();
+						NecrosisConfig.Graphical = not not this:GetChecked();
 						Necrosis_HideGraphTimer();
 					</OnClick>
 				</Scripts>
