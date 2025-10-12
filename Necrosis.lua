@@ -2034,32 +2034,32 @@ function Necrosis_BagExplore()
 					Stones.Healthstone.Location = { container, slot }
 				end
 				-- Et encore pour la pierre de sort
-				if string.find(itemName, NECROSIS_ITEM.Spellstone) then
+				if itemName == NECROSIS_ITEM.Spellstone then
 					Stones.Spellstone.OnHand = true
 					Stones.Spellstone.Location = { container, slot }
 				end
 				-- La pierre de feu maintenant
-				if string.find(itemName, NECROSIS_ITEM.Firestone) then
+				if itemName == NECROSIS_ITEM.Firestone then
 					Stones.Firestone.OnHand = true
 					Stones.Firestone.Location = { container, slot }
 				end
 				-- La Felstone
-				if string.find(itemName, NECROSIS_ITEM.Felstone) then
+				if itemName == NECROSIS_ITEM.Felstone then
 					Stones.Felstone.OnHand = true
 					Stones.Felstone.Location = { container, slot }
 				end
 				-- La Wrathstone
-				if string.find(itemName, NECROSIS_ITEM.Wrathstone) then
+				if itemName == NECROSIS_ITEM.Wrathstone then
 					Stones.Wrathstone.OnHand = true
 					Stones.Wrathstone.Location = { container, slot }
 				end
 				-- La Voidstone
-				if string.find(itemName, NECROSIS_ITEM.Voidstone) then
+				if itemName == NECROSIS_ITEM.Voidstone then
 					Stones.Voidstone.OnHand = true
 					Stones.Voidstone.Location = { container, slot }
 				end
 				-- et enfin la pierre de foyer
-				if string.find(itemName, NECROSIS_ITEM.Hearthstone) then
+				if itemName == NECROSIS_ITEM.Hearthstone then
 					Stones.Hearthstone.OnHand = true
 					Stones.Hearthstone.Location = { container, slot }
 				end
