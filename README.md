@@ -16,6 +16,10 @@ With the recent additions of exciting new stones like Felstone, Wrathstone, and 
 
 When left-clicking on a specific stone, or when middle-clicking the Stones menu button, Necrosis will create the select stone if you don't have one, or will use the selected stone if you already have one in your bags.
 
+#### Changes
+
+- Updated the icons of the Healthstone, Spellstone, and Soulstone.
+
 ### 1.5.2a
 
 #### Oct 11, 2025
