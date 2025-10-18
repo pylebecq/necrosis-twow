@@ -12,10 +12,9 @@
 ------------------------------------------------------------------------------------------------------
 
 NecrosisData = {}
-NecrosisData.Version = "1.5.2a"
-NecrosisData.Author = "Lomig & Nyx"
+NecrosisData.Version = "1.6.0"
 NecrosisData.AppName = "Necrosis"
-NecrosisData.Label = NecrosisData.AppName .. " " .. NecrosisData.Version .. " by " .. NecrosisData.Author
+NecrosisData.Label = NecrosisData.AppName .. " " .. NecrosisData.Version
 
 -- Raccourcis claviers
 BINDING_HEADER_NECRO_BIND = "Necrosis"
