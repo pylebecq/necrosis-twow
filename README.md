@@ -4,6 +4,16 @@ This is fork of version 1.5.2a of the Necrosis LdC addon for Turtle WoW server.
 
 ## Changes
 
+### Unreleased
+
+#### ✨ New feature: Ritual of Souls on Healthstone button
+
+Added a convenient Shift+Click action to the Healthstone button for casting Ritual of Souls:
+
+- **Shift+Click** the Healthstone button to cast Ritual of Souls (when you know the spell and it's not on cooldown)
+- The tooltip on the Healthstone button now shows the Shift+Click option with the mana cost
+- When Ritual of Souls is on cooldown, the tooltip displays a grayed-out message instead
+
 ### 1.6.0
 
 #### ✨ New feature: Stones menu

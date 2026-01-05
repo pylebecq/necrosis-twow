@@ -198,6 +198,28 @@ local ShardState = {
 	Time = 0,
 }
 
+------------------------------------------------------------------------------------------------------
+-- Helper function to format cooldown time for tooltip display
+-- Returns formatted string like "45 sec" or "3:25"
+------------------------------------------------------------------------------------------------------
+function Necrosis_FormatCooldownTime(start, duration)
+	local seconde = duration - (GetTime() - start)
+	local affiche, minute, time
+	if seconde <= 59 then
+		affiche = tostring(floor(seconde)) .. " sec"
+	else
+		minute = tostring(floor(seconde / 60))
+		seconde = mod(seconde, 60)
+		if seconde <= 9 then
+			time = "0" .. tostring(floor(seconde))
+		else
+			time = tostring(floor(seconde))
+		end
+		affiche = minute .. ":" .. time
+	end
+	return affiche
+end
+
 -- Variables utilisées pour la gestion des composants d'invocation
 -- (principalement comptage)
 local InfernalStone = 0
@@ -368,7 +390,10 @@ local function ApplyStoneTextureToStoneMenuButton(stoneType)
 		else
 			NecrosisStoneMenuButton:SetNormalTexture("Interface\\AddOns\\Necrosis\\UI\\" .. stoneType .. "Button-01")
 		end
-		NecrosisStoneMenuButton:SetHighlightTexture("Interface\\AddOns\\Necrosis\\UI\\" .. stoneType .. "Button-03", "BLEND")
+		NecrosisStoneMenuButton:SetHighlightTexture(
+			"Interface\\AddOns\\Necrosis\\UI\\" .. stoneType .. "Button-03",
+			"BLEND"
+		)
 	end
 end
 
@@ -1281,6 +1306,22 @@ function Necrosis_BuildTooltip(button, type, anchor)
 			if string.find(itemName, NECROSIS_TRANSLATION.Cooldown) then
 				GameTooltip:AddLine(itemName)
 			end
+			-- Add Ritual of Souls shift-click info
+			if NECROSIS_SPELL_TABLE[45].ID ~= nil then
+				local start, duration = GetSpellCooldown(NECROSIS_SPELL_TABLE[45].ID, BOOKTYPE_SPELL)
+				if start == 0 or duration == 0 then
+					GameTooltip:AddLine(
+						NecrosisTooltipData[type].RitualOfSouls .. " (" .. NECROSIS_SPELL_TABLE[45].Mana .. " Mana)"
+					)
+				else
+					GameTooltip:AddLine(
+						string.format(
+							NecrosisTooltipData[type].RitualOfSoulsCooldown,
+							Necrosis_FormatCooldownTime(start, duration)
+						)
+					)
+				end
+			end
 		-- Pierre de sort
 		elseif type == "Spellstone" then
 			-- Idem
@@ -1392,21 +1433,7 @@ function Necrosis_BuildTooltip(button, type, anchor)
 		GameTooltip:AddLine(NECROSIS_SPELL_TABLE[16].Mana .. " Mana")
 	elseif type == "Amplify" then
 		if start3 > 0 and duration3 > 0 then
-			local seconde = duration3 - (GetTime() - start3)
-			local affiche, minute, time
-			if seconde <= 59 then
-				affiche = tostring(floor(seconde)) .. " sec"
-			else
-				minute = tostring(floor(seconde / 60))
-				seconde = mod(seconde, 60)
-				if seconde <= 9 then
-					time = "0" .. tostring(floor(seconde))
-				else
-					time = tostring(floor(seconde))
-				end
-				affiche = minute .. ":" .. time
-			end
-			GameTooltip:AddLine("Cooldown : " .. affiche)
+			GameTooltip:AddLine("Cooldown : " .. Necrosis_FormatCooldownTime(start3, duration3))
 		end
 	elseif type == "TP" then
 		GameTooltip:AddLine(NECROSIS_SPELL_TABLE[37].Mana .. " Mana")
@@ -1418,28 +1445,11 @@ function Necrosis_BuildTooltip(button, type, anchor)
 	elseif type == "ShadowProtection" then
 		GameTooltip:AddLine(NECROSIS_SPELL_TABLE[43].Mana .. " Mana")
 		if start2 > 0 and duration2 > 0 then
-			local seconde = duration2 - (GetTime() - start2)
-			local affiche
-			affiche = tostring(floor(seconde)) .. " sec"
-			GameTooltip:AddLine("Cooldown : " .. affiche)
+			GameTooltip:AddLine("Cooldown : " .. Necrosis_FormatCooldownTime(start2, duration2))
 		end
 	elseif type == "Domination" then
 		if start > 0 and duration > 0 then
-			local seconde = duration - (GetTime() - start)
-			local affiche, minute, time
-			if seconde <= 59 then
-				affiche = tostring(floor(seconde)) .. " sec"
-			else
-				minute = tostring(floor(seconde / 60))
-				seconde = mod(seconde, 60)
-				if seconde <= 9 then
-					time = "0" .. tostring(floor(seconde))
-				else
-					time = tostring(floor(seconde))
-				end
-				affiche = minute .. ":" .. time
-			end
-			GameTooltip:AddLine("Cooldown : " .. affiche)
+			GameTooltip:AddLine("Cooldown : " .. Necrosis_FormatCooldownTime(start, duration))
 		end
 	elseif type == "Imp" then
 		GameTooltip:AddLine(NECROSIS_SPELL_TABLE[3].Mana .. " Mana")
@@ -2564,6 +2574,19 @@ function Necrosis_UseItem(type, button)
 		end
 	-- Si on clique sur le bouton de la pierre de vie :
 	elseif type == "Healthstone" then
+		-- Handle Shift+Click to cast Ritual of Souls
+		if IsShiftKeyDown() then
+			if NECROSIS_SPELL_TABLE[45].ID ~= nil then
+				local start, duration = GetSpellCooldown(NECROSIS_SPELL_TABLE[45].ID, BOOKTYPE_SPELL)
+				if start == 0 or duration == 0 then
+					CastSpell(NECROSIS_SPELL_TABLE[45].ID, "spell")
+					return
+				else
+					Necrosis_Msg(NECROSIS_MESSAGE.Error.RitualOfSoulsOnCooldown, "USER")
+					return
+				end
+			end
+		end
 		-- soit il y en a une dans l'inventaire
 		if Stones.Healthstone.OnHand then
 			-- Dans ce cas si un pj allié est sélectionné, on lui donne la pierre

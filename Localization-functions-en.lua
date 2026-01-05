@@ -102,6 +102,7 @@ NECROSIS_SPELL_TABLE = {
 	[42] = { ID = nil, Rank = nil, CastTime = nil, Mana = nil, Name = "Amplify Curse", Length = 180, Type = 3 },
 	[43] = { ID = nil, Rank = nil, CastTime = nil, Mana = nil, Name = "Shadow Ward", Length = 30, Type = 3 },
 	[44] = { ID = nil, Rank = nil, CastTime = nil, Mana = nil, Name = "Demonic Sacrifice", Length = 0, Type = 0 },
+	[45] = { ID = nil, Rank = nil, CastTime = nil, Mana = nil, Name = "Ritual of Souls", Length = 300, Type = 3 },
 }
 -- Type 0 = Pas de Timer
 -- Type 1 = Timer permanent principal

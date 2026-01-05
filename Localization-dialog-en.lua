@@ -54,6 +54,8 @@ function Necrosis_Localization_Dialog_En()
 		["Healthstone"] = {
 			Label = "|c0066FF33Healthstone|r",
 			Text = { "Create", "Use" },
+			RitualOfSouls = "Shift+Click: Ritual of Souls",
+			RitualOfSoulsCooldown = "|CFF808080Shift+Click: Ritual of Souls (Cooldown : %s)|r",
 		},
 		["Spellstone"] = {
 			Label = "|c0099CCFFSpellstone|r",
@@ -218,6 +220,7 @@ function Necrosis_Localization_Dialog_En()
 			["BagIsNumber"] = "Error : Please type a number.",
 			["NoHearthStone"] = "Error : You do not have a Hearthstone in your inventory",
 			["SpellStoneIsOnCooldown"] = "Error : Your Spellstone is on cooldown",
+			["RitualOfSoulsOnCooldown"] = "Error : Ritual of Souls is on cooldown",
 		},
 		["Bag"] = {
 			["FullPrefix"] = "Your ",
