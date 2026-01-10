@@ -2284,13 +2284,13 @@ function Necrosis_SpellSetup()
 		subName = {},
 	}
 
-	local spellID = 1
+	local spellSlot = 1
 	local Invisible = 0
 	local InvisibleID = 0
 
 	-- On va parcourir tous les sorts possedés par le Démoniste
 	while true do
-		local spellName, subSpellName = GetSpellName(spellID, BOOKTYPE_SPELL)
+		local spellName, subSpellName = GetSpellName(spellSlot, BOOKTYPE_SPELL)
 
 		if not spellName then
 			do
@@ -2307,7 +2307,7 @@ function Necrosis_SpellSetup()
 				if CurrentSpells.Name[index] == spellName then
 					found = true
 					if CurrentSpells.subName[index] < rank then
-						CurrentSpells.ID[index] = spellID
+						CurrentSpells.ID[index] = spellSlot
 						CurrentSpells.subName[index] = rank
 					end
 					break
@@ -2315,7 +2315,7 @@ function Necrosis_SpellSetup()
 			end
 			-- Les plus grands rangs de chacun des sorts à rang numérotés sont insérés dans la table
 			if not found then
-				table.insert(CurrentSpells.ID, spellID)
+				table.insert(CurrentSpells.ID, spellSlot)
 				table.insert(CurrentSpells.Name, spellName)
 				table.insert(CurrentSpells.subName, rank)
 			end
@@ -2324,13 +2324,13 @@ function Necrosis_SpellSetup()
 		-- Test du Rang de la détection d'invisibilité
 		if spellName == NECROSIS_TRANSLATION.GreaterInvisible then
 			Invisible = 3
-			InvisibleID = spellID
+			InvisibleID = spellSlot
 		elseif spellName == NECROSIS_TRANSLATION.Invisible and Invisible ~= 3 then
 			Invisible = 2
-			InvisibleID = spellID
+			InvisibleID = spellSlot
 		elseif spellName == NECROSIS_TRANSLATION.LesserInvisible and Invisible ~= 3 and Invisible ~= 2 then
 			Invisible = 1
-			InvisibleID = spellID
+			InvisibleID = spellSlot
 		end
 
 		-- Les pierres n'ont pas de rang numéroté, l'attribut de rang fait partie du nom du sort
@@ -2354,7 +2354,7 @@ function Necrosis_SpellSetup()
 							StoneMaxRank[stoneID] = rankID
 							CurrentStone.Name[stoneID] = spellName
 							CurrentStone.subName[stoneID] = NECROSIS_STONE_RANK[rankID]
-							CurrentStone.ID[stoneID] = spellID
+							CurrentStone.ID[stoneID] = spellSlot
 						end
 						break
 					end
@@ -2362,7 +2362,7 @@ function Necrosis_SpellSetup()
 			end
 		end
 
-		spellID = spellID + 1
+		spellSlot = spellSlot + 1
 	end
 
 	-- On insère dans la table les pierres avec le plus grand rang
@@ -2417,16 +2417,16 @@ function Necrosis_SpellSetup()
 		end
 	end
 
-	for spellID = 1, MAX_SPELLS, 1 do
-		local spellName, subSpellName = GetSpellName(spellID, "spell")
+	for spellSlot = 1, MAX_SPELLS, 1 do
+		local spellName, subSpellName = GetSpellName(spellSlot, "spell")
 		if spellName then
 			for index = 1, table.getn(NECROSIS_SPELL_TABLE), 1 do
 				if NECROSIS_SPELL_TABLE[index].Name == spellName then
 					Necrosis_MoneyToggle()
-					NecrosisTooltip:SetSpell(spellID, 1)
+					NecrosisTooltip:SetSpell(spellSlot, 1)
 					local _, _, ManaCost = string.find(NecrosisTooltipTextLeft2:GetText(), "(%d+)")
 					if not NECROSIS_SPELL_TABLE[index].ID then
-						NECROSIS_SPELL_TABLE[index].ID = spellID
+						NECROSIS_SPELL_TABLE[index].ID = spellSlot
 					end
 					NECROSIS_SPELL_TABLE[index].Mana = tonumber(ManaCost)
 				end
