@@ -12,7 +12,7 @@
 ------------------------------------------------------------------------------------------------------
 
 NecrosisData = {}
-NecrosisData.Version = "1.6.0"
+NecrosisData.Version = "1.7.0"
 NecrosisData.AppName = "Necrosis"
 NecrosisData.Label = NecrosisData.AppName .. " " .. NecrosisData.Version
 

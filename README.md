@@ -4,7 +4,7 @@ This is fork of version 1.5.2a of the Necrosis LdC addon for Turtle WoW server.
 
 ## Changes
 
-### Unreleased
+### 1.7.0
 
 #### ✨ New feature: Ritual of Souls on Healthstone button
 
