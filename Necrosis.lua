@@ -2258,6 +2258,9 @@ end
 -- Ma fonction préférée ! Elle fait la liste des sorts connus par le démo, et les classe par rang.
 -- Pour les pierres, elle sélectionne le plus haut rang connu
 function Necrosis_SpellSetup()
+	-- Reset the spell table
+	Necrosis_ResetSpellTable()
+
 	local StoneType = {
 		NECROSIS_ITEM.Soulstone,
 		NECROSIS_ITEM.Healthstone,
