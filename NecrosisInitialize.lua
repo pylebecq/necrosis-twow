@@ -109,6 +109,9 @@ function Necrosis_Initialize()
 		if NecrosisConfig.NecrosisLockServ then
 			NecrosisIconsLock_Button:SetChecked(1)
 		end
+		if NecrosisConfig.AllowGapsBetweenIcons then
+			NecrosisIconsGaps_Button:SetChecked(1)
+		end
 		if NecrosisConfig.StonePosition[1] then
 			NecrosisShowStoneMenu_Button:SetChecked(1)
 		end
@@ -308,6 +311,7 @@ function Necrosis_LanguageInitialize()
 
 	NecrosisShowTrance_Option:SetText(NECROSIS_CONFIGURATION.TranceButtonView)
 	NecrosisIconsLock_Option:SetText(NECROSIS_CONFIGURATION.ButtonLock)
+	NecrosisIconsGaps_Option:SetText(NECROSIS_CONFIGURATION.AllowGapsBetweenIcons)
 	NecrosisShowSpellstone_Option:SetText(NECROSIS_CONFIGURATION.Show.Spellstone)
 	NecrosisShowHealthStone_Option:SetText(NECROSIS_CONFIGURATION.Show.Healthstone)
 	NecrosisShowSoulstone_Option:SetText(NECROSIS_CONFIGURATION.Show.Soulstone)

@@ -22,6 +22,7 @@ Default_NecrosisConfig = {
 	ShowSpellTimers = true,
 	AntiFearAlert = true,
 	NecrosisLockServ = true,
+	AllowGapsBetweenIcons = true,
 	NecrosisAngle = 180,
 	StonePosition = { true, true, true, true, true, true, true, true },
 	NecrosisToolTip = true,
@@ -29,7 +30,7 @@ Default_NecrosisConfig = {
 	PetMenuPos = 34,
 	BuffMenuPos = 34,
 	CurseMenuPos = 34,
-	StoneMenuPos = 34,
+	StoneMenuPos = -34,
 	ChatMsg = true,
 	ChatType = true,
 	ShowCount = true,
@@ -519,8 +520,7 @@ function Necrosis_OnUpdate()
 			if NecrosisConfig.Sound then
 				PlaySoundFile(NECROSIS_SOUND.ShadowTrance)
 			end
-			local ShadowTranceIndex, cancel =
-				GetPlayerBuff(BuffAlert.ShadowTranceID, "HELPFUL|HARMFUL|PASSIVE")
+			local ShadowTranceIndex, cancel = GetPlayerBuff(BuffAlert.ShadowTranceID, "HELPFUL|HARMFUL|PASSIVE")
 			TimeLeft = floor(GetPlayerBuffTimeLeft(ShadowTranceIndex))
 			NecrosisShadowTranceTimer:SetText(TimeLeft)
 			ShowUIPanel(NecrosisShadowTranceButton)
@@ -530,8 +530,7 @@ function Necrosis_OnUpdate()
 			BuffAlert.ShadowTrance = false
 		end
 		if Actif and BuffAlert.ShadowTrance then
-			local ShadowTranceIndex, cancel =
-				GetPlayerBuff(BuffAlert.ShadowTranceID, "HELPFUL|HARMFUL|PASSIVE")
+			local ShadowTranceIndex, cancel = GetPlayerBuff(BuffAlert.ShadowTranceID, "HELPFUL|HARMFUL|PASSIVE")
 			TimeLeft = floor(GetPlayerBuffTimeLeft(ShadowTranceIndex))
 			NecrosisShadowTranceTimer:SetText(TimeLeft)
 		end
@@ -2228,7 +2227,7 @@ function Necrosis_ButtonSetup()
 		HideUIPanel(NecrosisSpellstoneButton)
 		HideUIPanel(NecrosisHealthstoneButton)
 		HideUIPanel(NecrosisSoulstoneButton)
-		if NecrosisConfig.StonePosition[1] and StoneMenuCreate ~= {} then
+		if NecrosisConfig.StonePosition[1] and table.getn(StoneMenuCreate) > 0 then
 			ShowUIPanel(NecrosisStoneMenuButton)
 		end
 		if NecrosisConfig.StonePosition[2] and StoneIDInSpellTable[3] ~= 0 then
@@ -2240,16 +2239,16 @@ function Necrosis_ButtonSetup()
 		if NecrosisConfig.StonePosition[4] and StoneIDInSpellTable[1] ~= 0 then
 			ShowUIPanel(NecrosisSoulstoneButton)
 		end
-		if NecrosisConfig.StonePosition[5] and BuffMenuCreate ~= {} then
+		if NecrosisConfig.StonePosition[5] and table.getn(BuffMenuCreate) > 0 then
 			ShowUIPanel(NecrosisBuffMenuButton)
 		end
 		if NecrosisConfig.StonePosition[6] and MountState.Available then
 			ShowUIPanel(NecrosisMountButton)
 		end
-		if NecrosisConfig.StonePosition[7] and PetMenuCreate ~= {} then
+		if NecrosisConfig.StonePosition[7] and table.getn(PetMenuCreate) > 0 then
 			ShowUIPanel(NecrosisPetMenuButton)
 		end
-		if NecrosisConfig.StonePosition[8] and CurseMenuCreate ~= {} then
+		if NecrosisConfig.StonePosition[8] and table.getn(CurseMenuCreate) > 0 then
 			ShowUIPanel(NecrosisCurseMenuButton)
 		end
 	end
@@ -2826,95 +2825,81 @@ function Necrosis_UpdateButtonsScale()
 		HideUIPanel(NecrosisSpellstoneButton)
 		HideUIPanel(NecrosisHealthstoneButton)
 		HideUIPanel(NecrosisSoulstoneButton)
+		local buttons = {
+			{
+				frame = NecrosisStoneMenuButton,
+				showCondition = function()
+					return table.getn(StoneMenuCreate) > 0
+				end,
+			},
+			{
+				frame = NecrosisSpellstoneButton,
+				showCondition = function()
+					return StoneIDInSpellTable[3] ~= 0
+				end,
+			},
+			{
+				frame = NecrosisHealthstoneButton,
+				showCondition = function()
+					return StoneIDInSpellTable[2] ~= 0
+				end,
+			},
+			{
+				frame = NecrosisSoulstoneButton,
+				showCondition = function()
+					return StoneIDInSpellTable[1] ~= 0
+				end,
+			},
+			{
+				frame = NecrosisBuffMenuButton,
+				showCondition = function()
+					return table.getn(BuffMenuCreate) > 0
+				end,
+			},
+			{
+				frame = NecrosisMountButton,
+				showCondition = function()
+					return MountState.Available
+				end,
+			},
+			{
+				frame = NecrosisPetMenuButton,
+				showCondition = function()
+					return table.getn(PetMenuCreate) > 0
+				end,
+			},
+			{
+				frame = NecrosisCurseMenuButton,
+				showCondition = function()
+					return table.getn(CurseMenuCreate) > 0
+				end,
+			},
+		}
 		local indexScale = -36
+
+		for index = 1, 8, 1 do
+			HideUIPanel(buttons[index].frame)
+		end
+
 		for index = 1, 8, 1 do
 			if NecrosisConfig.StonePosition[index] then
-				if index == 1 and StoneMenuCreate ~= {} then
-					NecrosisStoneMenuButton:SetPoint(
+				if buttons[index].showCondition() then
+					buttons[index].frame:SetPoint(
 						"CENTER",
 						"NecrosisButton",
 						"CENTER",
 						((40 * NBRScale) * cos(NecrosisConfig.NecrosisAngle - indexScale)),
 						((40 * NBRScale) * sin(NecrosisConfig.NecrosisAngle - indexScale))
 					)
-					ShowUIPanel(NecrosisStoneMenuButton)
+					ShowUIPanel(buttons[index].frame)
 					indexScale = indexScale + 36
+				else
+					if NecrosisConfig.AllowGapsBetweenIcons then
+						indexScale = indexScale + 36
+					end
 				end
-				if index == 2 and StoneIDInSpellTable[3] ~= 0 then
-					NecrosisSpellstoneButton:SetPoint(
-						"CENTER",
-						"NecrosisButton",
-						"CENTER",
-						((40 * NBRScale) * cos(NecrosisConfig.NecrosisAngle - indexScale)),
-						((40 * NBRScale) * sin(NecrosisConfig.NecrosisAngle - indexScale))
-					)
-					ShowUIPanel(NecrosisSpellstoneButton)
-					indexScale = indexScale + 36
-				end
-				if index == 3 and StoneIDInSpellTable[2] ~= 0 then
-					NecrosisHealthstoneButton:SetPoint(
-						"CENTER",
-						"NecrosisButton",
-						"CENTER",
-						((40 * NBRScale) * cos(NecrosisConfig.NecrosisAngle - indexScale)),
-						((40 * NBRScale) * sin(NecrosisConfig.NecrosisAngle - indexScale))
-					)
-					ShowUIPanel(NecrosisHealthstoneButton)
-					indexScale = indexScale + 36
-				end
-				if index == 4 and StoneIDInSpellTable[1] ~= 0 then
-					NecrosisSoulstoneButton:SetPoint(
-						"CENTER",
-						"NecrosisButton",
-						"CENTER",
-						((40 * NBRScale) * cos(NecrosisConfig.NecrosisAngle - indexScale)),
-						((40 * NBRScale) * sin(NecrosisConfig.NecrosisAngle - indexScale))
-					)
-					ShowUIPanel(NecrosisSoulstoneButton)
-					indexScale = indexScale + 36
-				end
-				if index == 5 and BuffMenuCreate ~= {} then
-					NecrosisBuffMenuButton:SetPoint(
-						"CENTER",
-						"NecrosisButton",
-						"CENTER",
-						((40 * NBRScale) * cos(NecrosisConfig.NecrosisAngle - indexScale)),
-						((40 * NBRScale) * sin(NecrosisConfig.NecrosisAngle - indexScale))
-					)
-					ShowUIPanel(NecrosisBuffMenuButton)
-					indexScale = indexScale + 36
-				end
-				if index == 6 and MountState.Available then
-					NecrosisMountButton:SetPoint(
-						"CENTER",
-						"NecrosisButton",
-						"CENTER",
-						((40 * NBRScale) * cos(NecrosisConfig.NecrosisAngle - indexScale)),
-						((40 * NBRScale) * sin(NecrosisConfig.NecrosisAngle - indexScale))
-					)
-					ShowUIPanel(NecrosisMountButton)
-					indexScale = indexScale + 36
-				end
-				if index == 7 and PetMenuCreate ~= {} then
-					NecrosisPetMenuButton:SetPoint(
-						"CENTER",
-						"NecrosisButton",
-						"CENTER",
-						((40 * NBRScale) * cos(NecrosisConfig.NecrosisAngle - indexScale)),
-						((40 * NBRScale) * sin(NecrosisConfig.NecrosisAngle - indexScale))
-					)
-					ShowUIPanel(NecrosisPetMenuButton)
-					indexScale = indexScale + 36
-				end
-				if index == 8 and CurseMenuCreate ~= {} then
-					NecrosisCurseMenuButton:SetPoint(
-						"CENTER",
-						"NecrosisButton",
-						"CENTER",
-						((40 * NBRScale) * cos(NecrosisConfig.NecrosisAngle - indexScale)),
-						((40 * NBRScale) * sin(NecrosisConfig.NecrosisAngle - indexScale))
-					)
-					ShowUIPanel(NecrosisCurseMenuButton)
+			else
+				if NecrosisConfig.AllowGapsBetweenIcons then
 					indexScale = indexScale + 36
 				end
 			end

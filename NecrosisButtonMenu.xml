@@ -143,9 +143,7 @@
 					<OnClick>
 						if (this:GetChecked()) then
 							NecrosisConfig.StonePosition[1] = true;
-							if StoneMenuCreate ~= {} then
-								ShowUIPanel(NecrosisStoneMenuButton);
-							end
+							ShowUIPanel(NecrosisStoneMenuButton);
 						else
 							NecrosisConfig.StonePosition[1] = false;
 							HideUIPanel(NecrosisStoneMenuButton);
@@ -172,6 +170,7 @@
 							ShowUIPanel(NecrosisSpellstoneButton);
 						else
 							NecrosisConfig.StonePosition[2] = false;
+							HideUIPanel(NecrosisSpellstoneButton);
 						end
 						Necrosis_UpdateButtonsScale();
 					</OnClick>
@@ -195,6 +194,7 @@
 							ShowUIPanel(NecrosisHealthstoneButton);
 						else
 							NecrosisConfig.StonePosition[3] = false;
+							HideUIPanel(NecrosisHealthstoneButton);
 						end
 						Necrosis_UpdateButtonsScale();
 					</OnClick>
@@ -218,6 +218,7 @@
 							ShowUIPanel(NecrosisSoulstoneButton);
 						else
 							NecrosisConfig.StonePosition[4] = false;
+							HideUIPanel(NecrosisSoulstoneButton);
 						end
 						Necrosis_UpdateButtonsScale();
 					</OnClick>

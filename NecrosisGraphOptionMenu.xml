@@ -27,7 +27,17 @@
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="NecrosisGraphOptionMenu" relativeFrom="TOPLEFT">
 							<Offset>
-								<AbsDimension x="60" y="-80"/>
+								<AbsDimension x="60" y="-70"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="NecrosisIconsGaps_Option" inherits="GameFontNormalSmall">
+					<Color r="1.0" g="1.0" b="1.0" a="1"/>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="NecrosisGraphOptionMenu" relativeFrom="TOPLEFT">
+							<Offset>
+								<AbsDimension x="100" y="-90"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -37,7 +47,7 @@
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="NecrosisGraphOptionMenu" relativeFrom="TOPLEFT">
 							<Offset>
-								<AbsDimension x="60" y="-100"/>
+								<AbsDimension x="60" y="-120"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -225,7 +235,7 @@
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="NecrosisGraphOptionMenu" relativeFrom="TOPLEFT">
 						<Offset>
-							<AbsDimension x="30" y="-75"/>
+							<AbsDimension x="30" y="-65"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -260,6 +270,28 @@
 					</OnClick>
 				</Scripts>
 			</CheckButton>
+			<CheckButton name="NecrosisIconsGaps_Button" enableMouse="true" inherits="UICheckButtonTemplate" checked="false">
+				<Size>
+					<AbsDimension x="24" y="24"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="NecrosisGraphOptionMenu" relativeFrom="TOPLEFT">
+						<Offset>
+							<AbsDimension x="70" y="-85"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						if (this:GetChecked()) then
+							NecrosisConfig.AllowGapsBetweenIcons = true;
+						else
+							NecrosisConfig.AllowGapsBetweenIcons = false;
+						end
+						Necrosis_UpdateButtonsScale();
+					</OnClick>
+				</Scripts>
+			</CheckButton>
 			<CheckButton name="NecrosisLock_Button" enableMouse="true" inherits="UICheckButtonTemplate" checked="false">
 				<Size>
 					<AbsDimension x="24" y="24"/>
@@ -267,7 +299,7 @@
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="NecrosisGraphOptionMenu" relativeFrom="TOPLEFT">
 						<Offset>
-							<AbsDimension x="30" y="-95"/>
+							<AbsDimension x="30" y="-115"/>
 						</Offset>
 					</Anchor>
 				</Anchors>

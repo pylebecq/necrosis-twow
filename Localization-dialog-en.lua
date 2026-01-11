@@ -285,6 +285,7 @@ function Necrosis_Localization_Dialog_En()
 		["GraphicalTimer"] = "Show graphical instead text timers",
 		["TranceButtonView"] = "Let me see hidden buttons to drag them.",
 		["ButtonLock"] = "Lock the buttons around the Necrosis Sphere.",
+		["AllowGapsBetweenIcons"] = "Use fixed button positions (leave gaps for hidden buttons)",
 		["MainLock"] = "Lock buttons and the Necrosis Sphere.",
 		["BagSelect"] = "Selection of Soul Shard Container",
 		["BuffMenu"] = "Put buff menu on the left",
