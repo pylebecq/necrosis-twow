@@ -510,28 +510,28 @@ function Necrosis_OnUpdate()
 		local Actif = false
 		local TimeLeft = 0
 		Necrosis_UnitHasTrance()
-		if BuffAlert.BuffAlert.ShadowTranceID ~= -1 then
+		if BuffAlert.ShadowTranceID ~= -1 then
 			Actif = true
 		end
-		if Actif and not BuffAlert.BuffAlert.ShadowTrance then
-			BuffAlert.BuffAlert.ShadowTrance = true
+		if Actif and not BuffAlert.ShadowTrance then
+			BuffAlert.ShadowTrance = true
 			Necrosis_Msg(NECROSIS_NIGHTFALL_TEXT.Message, "USER")
 			if NecrosisConfig.Sound then
-				PlaySoundFile(NECROSIS_SOUND.BuffAlert.ShadowTrance)
+				PlaySoundFile(NECROSIS_SOUND.ShadowTrance)
 			end
 			local ShadowTranceIndex, cancel =
-				GetPlayerBuff(BuffAlert.BuffAlert.ShadowTranceID, "HELPFUL|HARMFUL|PASSIVE")
+				GetPlayerBuff(BuffAlert.ShadowTranceID, "HELPFUL|HARMFUL|PASSIVE")
 			TimeLeft = floor(GetPlayerBuffTimeLeft(ShadowTranceIndex))
 			NecrosisShadowTranceTimer:SetText(TimeLeft)
 			ShowUIPanel(NecrosisShadowTranceButton)
 		end
-		if not Actif and BuffAlert.BuffAlert.ShadowTrance then
+		if not Actif and BuffAlert.ShadowTrance then
 			HideUIPanel(NecrosisShadowTranceButton)
-			BuffAlert.BuffAlert.ShadowTrance = false
+			BuffAlert.ShadowTrance = false
 		end
-		if Actif and BuffAlert.BuffAlert.ShadowTrance then
+		if Actif and BuffAlert.ShadowTrance then
 			local ShadowTranceIndex, cancel =
-				GetPlayerBuff(BuffAlert.BuffAlert.ShadowTranceID, "HELPFUL|HARMFUL|PASSIVE")
+				GetPlayerBuff(BuffAlert.ShadowTranceID, "HELPFUL|HARMFUL|PASSIVE")
 			TimeLeft = floor(GetPlayerBuffTimeLeft(ShadowTranceIndex))
 			NecrosisShadowTranceTimer:SetText(TimeLeft)
 		end
@@ -572,43 +572,43 @@ function Necrosis_OnUpdate()
 			end
 
 			-- an immunity has been detected before, but we still don't know why => show the button anyway
-			if BuffAlert.BuffAlert.AFCurrentTargetImmune and not Actif then
+			if BuffAlert.AFCurrentTargetImmune and not Actif then
 				Actif = 1
 			end
 		end
 
 		if Actif then
 			-- Antifear button is currently not visible, we have to change that
-			if not BuffAlert.BuffAlert.AntiFearInUse then
-				BuffAlert.BuffAlert.AntiFearInUse = true
+			if not BuffAlert.AntiFearInUse then
+				BuffAlert.AntiFearInUse = true
 				Necrosis_Msg(NECROSIS_MESSAGE.Information.FearProtect, "USER")
 				NecrosisAntiFearButton:SetNormalTexture(
-					"Interface\\Addons\\Necrosis\\UI\\AntiFear" .. BuffAlert.BuffAlert.AFImageType[Actif] .. "-02"
+					"Interface\\Addons\\Necrosis\\UI\\AntiFear" .. BuffAlert.AFImageType[Actif] .. "-02"
 				)
 				if NecrosisConfig.Sound then
 					PlaySoundFile(NECROSIS_SOUND.Fear)
 				end
 				ShowUIPanel(NecrosisAntiFearButton)
-				BuffAlert.BuffAlert.AFBlink1 = curTime + 0.6
-				BuffAlert.BuffAlert.AFBlink2 = 2
+				BuffAlert.AFBlink1 = curTime + 0.6
+				BuffAlert.AFBlink2 = 2
 
 			-- Timer to make the button blink
-			elseif curTime >= BuffAlert.BuffAlert.AFBlink1 then
-				if BuffAlert.BuffAlert.AFBlink2 == 1 then
-					BuffAlert.BuffAlert.AFBlink2 = 2
+			elseif curTime >= BuffAlert.AFBlink1 then
+				if BuffAlert.AFBlink2 == 1 then
+					BuffAlert.AFBlink2 = 2
 				else
-					BuffAlert.BuffAlert.AFBlink2 = 1
+					BuffAlert.AFBlink2 = 1
 				end
-				BuffAlert.BuffAlert.AFBlink1 = curTime + 0.4
+				BuffAlert.AFBlink1 = curTime + 0.4
 				NecrosisAntiFearButton:SetNormalTexture(
 					"Interface\\Addons\\Necrosis\\UI\\AntiFear"
-						.. BuffAlert.BuffAlert.AFImageType[Actif]
+						.. BuffAlert.AFImageType[Actif]
 						.. "-0"
-						.. BuffAlert.BuffAlert.AFBlink2
+						.. BuffAlert.AFBlink2
 				)
 			end
-		elseif BuffAlert.BuffAlert.AntiFearInUse then -- No antifear on target, but the button is still visible => gonna hide it
-			BuffAlert.BuffAlert.AntiFearInUse = false
+		elseif BuffAlert.AntiFearInUse then -- No antifear on target, but the button is still visible => gonna hide it
+			BuffAlert.AntiFearInUse = false
 			HideUIPanel(NecrosisAntiFearButton)
 		end
 	end
@@ -790,8 +790,8 @@ function Necrosis_OnEvent(event)
 		TradeState.Request = false
 	-- AntiFear button hide on target change
 	elseif event == "PLAYER_TARGET_CHANGED" then
-		if NecrosisConfig.AntiFearAlert and BuffAlert.BuffAlert.AFCurrentTargetImmune then
-			BuffAlert.BuffAlert.AFCurrentTargetImmune = false
+		if NecrosisConfig.AntiFearAlert and BuffAlert.AFCurrentTargetImmune then
+			BuffAlert.AFCurrentTargetImmune = false
 		end
 	-- AntiFear immunity on cast detection
 	elseif event == "CHAT_MSG_SPELL_SELF_DAMAGE" then
@@ -1377,7 +1377,7 @@ function Necrosis_BuildTooltip(button, type, anchor)
 		end
 
 	-- ..... pour le bouton de la Transe de l'ombre
-	elseif type == "BuffAlert.ShadowTrance" then
+	elseif type == "ShadowTrance" then
 		local rank = Necrosis_FindSpellAttribute("Name", NECROSIS_NIGHTFALL.BoltName, "Rank")
 		GameTooltip:SetText(NecrosisTooltipData[type].Label .. "          |CFF808080Rank " .. rank .. "|r")
 	-- ..... pour les autres buffs et démons, le coût en mana...
