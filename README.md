@@ -4,6 +4,21 @@ This is fork of version 1.5.2a of the Necrosis LdC addon for Turtle WoW server.
 
 ## Changes
 
+### 1.8.0
+
+#### Changes
+
+- Added a new graphical option: "Use fixed button positions" (enabled by default). When enabled, spell icons take fixed positions around the sphere, keeping the spells menu, summons menu, and curses menu always on the right. This creates gaps between buttons when you haven't learned certain spells yet, but it prevents icons from shifting as you progress, which could hide some menus behind the sphere or require constant setting adjustments. This improves muscle memory and provides a better experience for new players.
+- The "Put stone menu on the left" option is now enabled by default to position the stones menu properly when using the new "Use fixed button positions" option.
+
+#### Bug fixes
+
+- Fixed a bug making all buttons cast a wrong spell after learning some new spells.
+- The summons menu button will now be hidden for players who do not know any summons yet.
+- The curses menu button will now be hidden for players who do not know any curses yet.
+- The stones menu button will now be hidden for players who do not know any stones yet.
+- Fixed the shadow trance and fear immunity indicators which were not working.
+
 ### 1.7.0
 
 #### ✨ New feature: Ritual of Souls on Healthstone button

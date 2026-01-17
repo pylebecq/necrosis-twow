@@ -1,7 +1,7 @@
 ## Interface: 11200
 ## Title: |CFFB700B7N|CFFFF00FFe|CFFFF50FFc|CFFFF99FFr|CFFFFC4FFo|CFFFFFFFFs|CFFFFC4FFi|CFFFF99FFs |CFFFF50FFL|CFFFF00FFd|CFFB700B7C |CFF7FFF7F TurtleWOW|r
 ## Notes: All-in-one |CFF9482C9Warlock|r addon: spell timers, shards and stones management, and quick access to essential abilities, all designed to streamline the Warlock experience.
-## Version: 1.7.0
+## Version: 1.8.0
 ## OptionalDeps:
 ## Dependencies:
 ## DefaultState:
