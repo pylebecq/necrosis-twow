@@ -221,6 +221,7 @@ function Necrosis_Localization_Dialog_En()
 			["NoHearthStone"] = "Error : You do not have a Hearthstone in your inventory",
 			["SpellStoneIsOnCooldown"] = "Error : Your Spellstone is on cooldown",
 			["RitualOfSoulsOnCooldown"] = "Error : Ritual of Souls is on cooldown",
+			["NampowerRequired"] = "requires nampower >= v4.1.3. Enable it in the TurtleWoW launcher.",
 		},
 		["Bag"] = {
 			["FullPrefix"] = "Your ",

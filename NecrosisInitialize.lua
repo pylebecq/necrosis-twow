@@ -255,8 +255,8 @@ function Necrosis_Initialize()
 			AnchorSpellTimerTooltip = "ANCHOR_RIGHT"
 		end
 
-		-- On vérifie que les fragments sont dans le sac défini par le Démoniste
-		Necrosis_SoulshardSwitch("CHECK")
+		-- Initial bag scan to find all items and count misplaced shards
+		Necrosis_BagExplore()
 
 		-- Le Shard est-il vérouillé sur l'interface ?
 		if NecrosisConfig.NoDragAll then

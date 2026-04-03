@@ -11,9 +11,12 @@
 	
 	<Frame name="Necrosis_Variable_Frame" hidden="false">
 		<Scripts>
-			<OnUpdate>
+			<OnLoad>
+				this:RegisterEvent("VARIABLES_LOADED")
+			</OnLoad>
+			<OnEvent>
 				Necrosis_LoadVariables()
-			</OnUpdate>
+			</OnEvent>
 		</Scripts>
 	</Frame>
 	

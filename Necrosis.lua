@@ -221,6 +221,11 @@ function Necrosis_FormatCooldownTime(start, duration)
 	return affiche
 end
 
+-- Item IDs for countable (non-stone) items
+local SOULSHARD_ITEM_ID = 6265
+local INFERNAL_STONE_ITEM_ID = 5565
+local DEMONIAC_STONE_ITEM_ID = 16583
+
 -- Variables utilisées pour la gestion des composants d'invocation
 -- (principalement comptage)
 local InfernalStone = 0
@@ -282,6 +287,27 @@ local Stones = {
 	},
 }
 
+-- Item ID to Stones table entry lookup for fast bag scanning via nampower GetBagItems().
+-- Maps directly to Stones table references so they cannot get out of sync.
+local STONE_ITEM_IDS = {
+	[5232] = Stones.Soulstone,
+	[16892] = Stones.Soulstone,
+	[16893] = Stones.Soulstone,
+	[16895] = Stones.Soulstone,
+	[16896] = Stones.Soulstone,
+	[5512] = Stones.Healthstone,
+	[5511] = Stones.Healthstone,
+	[5509] = Stones.Healthstone,
+	[5510] = Stones.Healthstone,
+	[9421] = Stones.Healthstone,
+	[51933] = Stones.Spellstone,
+	[51932] = Stones.Firestone,
+	[51934] = Stones.Felstone,
+	[51935] = Stones.Wrathstone,
+	[51936] = Stones.Voidstone,
+	[6948] = Stones.Hearthstone,
+}
+
 -- Variables utilisées dans la gestion des démons
 local DemonType = nil
 local DemonEnslaved = false
@@ -295,6 +321,10 @@ local TradeState = {
 
 -- Gestion des sacs à fragment d'âme
 local BagIsSoulPouch = { nil, nil, nil, nil, nil }
+
+-- Debounce state for BAG_UPDATE
+local BagUpdatePending = false
+local BagUpdateTime = 0
 
 -- Variable contenant les derniers messages invoqués
 local PetMess = 0
@@ -357,9 +387,32 @@ function Necrosis_OnLoad()
 	SLASH_NecrosisCommand1 = "/necro"
 end
 
+-- Check that nampower is installed and meets the minimum version requirement
+local function HasMinimumNampowerVersion(major, minor, patch)
+	if GetNampowerVersion then
+		local installedMajor, installedMinor, installedPatch = GetNampowerVersion()
+		if installedMajor > major then
+			return true
+		elseif installedMajor == major and installedMinor > minor then
+			return true
+		elseif installedMajor == major and installedMinor == minor and installedPatch >= patch then
+			return true
+		end
+	end
+	return false
+end
+
 -- Fonction appliquée une fois les paramètres des mods chargés
 function Necrosis_LoadVariables()
 	if Loaded or UnitClass("player") ~= NECROSIS_UNIT_WARLOCK then
+		return
+	end
+
+	-- Load localization strings early so we can use Necrosis_Msg for the version check error
+	Necrosis_Localization_Dialog_En()
+
+	if not HasMinimumNampowerVersion(4, 1, 3) then
+		Necrosis_Msg(NECROSIS_MESSAGE.Error.NampowerRequired, "USER")
 		return
 	end
 
@@ -418,8 +471,18 @@ function Necrosis_OnUpdate()
 	end
 	-- La fonction n'est utilisée que si Necrosis est initialisé et le joueur un Démoniste --
 
-	-- Gestion des fragments d'âme : Tri des fragment toutes les secondes
 	local curTime = GetTime()
+
+	-- Process debounced bag update after 0.2s of quiet
+	if BagUpdatePending and (curTime - BagUpdateTime) >= 0.2 then
+		BagUpdatePending = false
+		Necrosis_BagExplore()
+		if NecrosisConfig.SoulshardSort and ShardState.MP > 0 then
+			Necrosis_SoulshardSwitch("MOVE")
+		end
+	end
+
+	-- Move misplaced soul shards every second
 	if (curTime - ShardState.Time) >= 1 then
 		ShardState.Time = curTime
 		if ShardState.MP > 0 then
@@ -754,13 +817,11 @@ function Necrosis_OnEvent(event)
 		return
 	end
 
-	-- Si le contenu des sacs a changé, on vérifie que les Fragments d'âme sont toujours dans le bon sac
+	-- Debounce bag updates: set a flag and defer the scan to OnUpdate
 	if event == "BAG_UPDATE" then
-		if NecrosisConfig.SoulshardSort then
-			Necrosis_SoulshardSwitch("CHECK")
-		else
-			Necrosis_BagExplore()
-		end
+		BagUpdatePending = true
+		BagUpdateTime = GetTime()
+		return
 	-- Gestion de la fin de l'incantation des sorts
 	elseif event == "SPELLCAST_STOP" then
 		Necrosis_SpellManagement()
@@ -1987,10 +2048,12 @@ function Necrosis_SoulshardSetup()
 	end
 end
 
--- Fonction qui fait l'inventaire des éléments utilisés en démonologie : Pierres, Fragments, Composants d'invocation
+-- Scan all bags for warlock items using nampower GetBagItems() for fast item ID lookups.
+-- Also counts misplaced soul shards (ShardState.MP) for the shard sorting feature.
 function Necrosis_BagExplore()
 	local soulshards = ShardState.Count
 	ShardState.Count = 0
+	ShardState.MP = 0
 	InfernalStone = 0
 	DemoniacStone = 0
 	Stones.Soulstone.OnHand = false
@@ -2002,88 +2065,55 @@ function Necrosis_BagExplore()
 	Stones.Spellstone.OnHand = false
 	Stones.Hearthstone.OnHand = false
 	ItemOnHand = false
-	-- Parcours des sacs
-	for container = 0, 4, 1 do
-		-- Parcours des emplacements des sacs
-		for slot = 1, GetContainerNumSlots(container), 1 do
-			Necrosis_MoneyToggle()
-			NecrosisTooltip:SetBagItem(container, slot)
-			local itemName = tostring(NecrosisTooltipTextLeft1:GetText())
-			local itemSwitch = tostring(NecrosisTooltipTextLeft3:GetText())
-			local itemSwitch2 = tostring(NecrosisTooltipTextLeft4:GetText())
-			-- Si le sac est le sac défini pour les fragments
-			-- hop la valeur du Tableau qui représente le slot du Sac = nil (pas de Shard)
-			if container == NecrosisConfig.SoulshardContainer then
-				if itemName ~= NECROSIS_ITEM.Soulshard then
-					ShardState.Slot[slot] = nil
-				end
-			end
-			-- Dans le cas d'un emplacement non vide
-			if itemName then
-				-- On prend le nombre d'item en stack sur le slot
-				local _, ItemCount = GetContainerItemInfo(container, slot)
-				-- Si c'est un fragment ou une pierre infernale, alors on rajoute la qté au nombre de pierres
-				if itemName == NECROSIS_ITEM.Soulshard then
-					ShardState.Count = ShardState.Count + ItemCount
-				end
-				if itemName == NECROSIS_ITEM.InfernalStone then
-					InfernalStone = InfernalStone + ItemCount
-				end
-				if itemName == NECROSIS_ITEM.DemoniacStone then
-					DemoniacStone = DemoniacStone + ItemCount
-				end
-				-- Si c'est une pierre d'âme, on note son existence et son emplacement
-				if string.find(itemName, NECROSIS_ITEM.Soulstone) then
-					Stones.Soulstone.OnHand = true
-					Stones.Soulstone.Location = { container, slot }
-				end
-				-- Même chose pour une pierre de soin
-				if string.find(itemName, NECROSIS_ITEM.Healthstone) then
-					Stones.Healthstone.OnHand = true
-					Stones.Healthstone.Location = { container, slot }
-				end
-				-- Et encore pour la pierre de sort
-				if itemName == NECROSIS_ITEM.Spellstone then
-					Stones.Spellstone.OnHand = true
-					Stones.Spellstone.Location = { container, slot }
-				end
-				-- La pierre de feu maintenant
-				if itemName == NECROSIS_ITEM.Firestone then
-					Stones.Firestone.OnHand = true
-					Stones.Firestone.Location = { container, slot }
-				end
-				-- La Felstone
-				if itemName == NECROSIS_ITEM.Felstone then
-					Stones.Felstone.OnHand = true
-					Stones.Felstone.Location = { container, slot }
-				end
-				-- La Wrathstone
-				if itemName == NECROSIS_ITEM.Wrathstone then
-					Stones.Wrathstone.OnHand = true
-					Stones.Wrathstone.Location = { container, slot }
-				end
-				-- La Voidstone
-				if itemName == NECROSIS_ITEM.Voidstone then
-					Stones.Voidstone.OnHand = true
-					Stones.Voidstone.Location = { container, slot }
-				end
-				-- et enfin la pierre de foyer
-				if itemName == NECROSIS_ITEM.Hearthstone then
-					Stones.Hearthstone.OnHand = true
-					Stones.Hearthstone.Location = { container, slot }
-				end
 
-				-- On note aussi la présence ou non des objets "main gauche"
-				-- Plus tard ce sera utilisé pour remplacer automatiquement une pierre absente
-				if itemSwitch == NECROSIS_ITEM.Offhand or itemSwitch2 == NECROSIS_ITEM.Offhand then
-					ItemOnHand = true
-					ItemswitchLocation = { container, slot }
+	local allItems = GetBagItems()
+	for container = 0, 4, 1 do
+		local bagContents = allItems[container]
+
+		-- Clear shard slot tracking for the designated shard bag
+		if container == NecrosisConfig.SoulshardContainer then
+			for slot = 1, GetContainerNumSlots(container), 1 do
+				ShardState.Slot[slot] = nil
+			end
+		end
+
+		if bagContents then
+			for slot, itemInfo in pairs(bagContents) do
+				local itemId = itemInfo.itemId
+				local stackCount = itemInfo.stackCount
+
+				if itemId == SOULSHARD_ITEM_ID then
+					ShardState.Count = ShardState.Count + stackCount
+					-- Track misplaced shards for the shard sorting feature
+					if container ~= NecrosisConfig.SoulshardContainer then
+						ShardState.MP = ShardState.MP + 1
+					else
+						ShardState.Slot[slot] = slot
+					end
+				elseif itemId == INFERNAL_STONE_ITEM_ID then
+					InfernalStone = InfernalStone + stackCount
+				elseif itemId == DEMONIAC_STONE_ITEM_ID then
+					DemoniacStone = DemoniacStone + stackCount
+				else
+					-- Check if this item is a tracked stone (direct table reference lookup)
+					local stone = STONE_ITEM_IDS[itemId]
+					if stone then
+						stone.OnHand = true
+						stone.Location = { container, slot }
+					else
+						-- Check for offhand-equippable items (inventoryType 23 = Held In Off-hand)
+						local invType = GetItemStatsField(itemId, "inventoryType")
+						if invType == 23 then
+							ItemOnHand = true
+							ItemswitchLocation = { container, slot }
+						end
+					end
 				end
 			end
 		end
 	end
 
-	-- Affichage du bouton principal de Necrosis
+	-- Update the main Necrosis button texture with shard count
 	if NecrosisConfig.Circle == 1 then
 		if ShardState.Count <= 32 then
 			NecrosisButton:SetNormalTexture(
@@ -2114,10 +2144,9 @@ function Necrosis_BagExplore()
 	else
 		NecrosisShardCount:SetText("")
 	end
-	-- Et on met le tout à jour !
 	Necrosis_UpdateIcons()
 
-	-- S'il y a plus de fragment que d'emplacements dans le sac défini, on affiche un message d'avertissement
+	-- Warn when the designated shard bag is full
 	if
 		ShardState.Count > soulshards
 		and ShardState.Count == GetContainerNumSlots(NecrosisConfig.SoulshardContainer)
@@ -2138,34 +2167,35 @@ function Necrosis_BagExplore()
 	end
 end
 
--- Fonction qui permet de trouver / ranger les fragments dans les sacs
+-- Move misplaced soul shards into the designated shard container.
+-- ShardState.MP (misplaced shard count) is computed by Necrosis_BagExplore().
+-- After moving, re-scans bags to update all item locations that may have been displaced.
 function Necrosis_SoulshardSwitch(type)
-	if type == "CHECK" then
-		ShardState.MP = 0
-		for container = 0, 4, 1 do
-			for i = 1, 3, 1 do
-				if GetBagName(container) == NECROSIS_ITEM.SoulPouch[i] then
-					BagIsSoulPouch[container + 1] = true
-					break
-				else
-					BagIsSoulPouch[container + 1] = false
-				end
+	if type ~= "MOVE" then
+		return
+	end
+
+	-- Detect soul pouch bags so we skip moving shards out of them
+	for container = 0, 4, 1 do
+		BagIsSoulPouch[container + 1] = false
+		for i = 1, 3, 1 do
+			if GetBagName(container) == NECROSIS_ITEM.SoulPouch[i] then
+				BagIsSoulPouch[container + 1] = true
+				break
 			end
 		end
 	end
+
+	local allItems = GetBagItems()
 	for container = 0, 4, 1 do
 		if BagIsSoulPouch[container + 1] then
 			break
 		end
 		if container ~= NecrosisConfig.SoulshardContainer then
-			for slot = 1, GetContainerNumSlots(container), 1 do
-				Necrosis_MoneyToggle()
-				NecrosisTooltip:SetBagItem(container, slot)
-				local itemInfo = tostring(NecrosisTooltipTextLeft1:GetText())
-				if itemInfo == NECROSIS_ITEM.Soulshard then
-					if type == "CHECK" then
-						ShardState.MP = ShardState.MP + 1
-					elseif type == "MOVE" then
+			local bagContents = allItems[container]
+			if bagContents then
+				for slot, itemInfo in pairs(bagContents) do
+					if itemInfo.itemId == SOULSHARD_ITEM_ID then
 						Necrosis_FindSlot(container, slot)
 						ShardState.MP = ShardState.MP - 1
 					end
@@ -2173,20 +2203,22 @@ function Necrosis_SoulshardSwitch(type)
 			end
 		end
 	end
-	-- Après avoir tout déplacer, il faut retrouver les emplacements des pierres, etc, etc...
+
+	-- After moving shards, re-scan to find correct positions of all tracked items
 	Necrosis_BagExplore()
 end
 
--- Pendant le déplacement des fragments, il faut trouver un nouvel emplacement aux objets déplacés :)
+-- Find an empty or non-shard slot in the shard container and swap the misplaced shard into it.
 function Necrosis_FindSlot(shardIndex, shardSlot)
 	local full = true
-	for slot = 1, GetContainerNumSlots(NecrosisConfig.SoulshardContainer), 1 do
-		Necrosis_MoneyToggle()
-		NecrosisTooltip:SetBagItem(NecrosisConfig.SoulshardContainer, slot)
-		local itemInfo = tostring(NecrosisTooltipTextLeft1:GetText())
-		if string.find(itemInfo, NECROSIS_ITEM.Soulshard) == nil then
+	local shardBag = NecrosisConfig.SoulshardContainer
+	local bagContents = GetBagItems(shardBag)
+	for slot = 1, GetContainerNumSlots(shardBag), 1 do
+		-- Slot is available if it's empty or contains a non-shard item
+		local slotItem = bagContents and bagContents[slot]
+		if not slotItem or slotItem.itemId ~= SOULSHARD_ITEM_ID then
 			PickupContainerItem(shardIndex, shardSlot)
-			PickupContainerItem(NecrosisConfig.SoulshardContainer, slot)
+			PickupContainerItem(shardBag, slot)
 			ShardState.Slot[ShardState.SlotID] = slot
 			ShardState.SlotID = ShardState.SlotID + 1
 			if CursorHasItem() then
@@ -2200,7 +2232,7 @@ function Necrosis_FindSlot(shardIndex, shardSlot)
 			break
 		end
 	end
-	-- Destruction des fragments en sur-nombre si l'option est activée
+	-- Destroy excess shards if the option is enabled
 	if full and NecrosisConfig.SoulshardDestroy then
 		PickupContainerItem(shardIndex, shardSlot)
 		if CursorHasItem() then
