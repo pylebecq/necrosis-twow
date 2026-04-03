@@ -431,28 +431,18 @@ end
 -- HELPER FUNCTIONS
 ------------------------------------------------------------------------------------------------------
 
-local function SetStoneMenuTexturesForMenuOpen()
-	if NecrosisConfig.LastStone ~= "" then
-		NecrosisStoneMenuButton:SetNormalTexture(
-			"Interface\\AddOns\\Necrosis\\UI\\" .. NecrosisConfig.LastStone .. "Button-03"
-		)
-	end
-end
-
 local function ApplyStoneTextureToStoneMenuButton(stoneType)
+	local texturePath = "Interface\\AddOns\\Necrosis\\UI\\" .. stoneType .. "Button"
 	if MenuState.StoneMenuShow then
-		SetStoneMenuTexturesForMenuOpen()
+		NecrosisStoneMenuButton:SetNormalTexture(texturePath .. "-03")
 	else
 		if Stones[stoneType].OnHand then
-			NecrosisStoneMenuButton:SetNormalTexture("Interface\\AddOns\\Necrosis\\UI\\" .. stoneType .. "Button-02")
+			NecrosisStoneMenuButton:SetNormalTexture(texturePath .. "-02")
 		else
-			NecrosisStoneMenuButton:SetNormalTexture("Interface\\AddOns\\Necrosis\\UI\\" .. stoneType .. "Button-01")
+			NecrosisStoneMenuButton:SetNormalTexture(texturePath .. "-01")
 		end
-		NecrosisStoneMenuButton:SetHighlightTexture(
-			"Interface\\AddOns\\Necrosis\\UI\\" .. stoneType .. "Button-03",
-			"BLEND"
-		)
 	end
+	NecrosisStoneMenuButton:SetHighlightTexture(texturePath .. "-03", "BLEND")
 end
 
 local function SetStoneMenuTextures()
@@ -3145,7 +3135,7 @@ function Necrosis_StoneMenu(button)
 		MenuState.AlphaStoneMenu = 1
 	else
 		MenuState.StoneShow = true
-		SetStoneMenuTexturesForMenuOpen()
+		SetStoneMenuTextures()
 		-- Si clic droit, le menu de stone reste ouvert
 		if button == "RightButton" then
 			MenuState.StoneVisible = true
@@ -3172,6 +3162,7 @@ end
 -- Fonction pour utiliser une stone depuis le menu
 function Necrosis_UseStone(stoneType, button)
 	NecrosisConfig.LastStone = stoneType
+	ApplyStoneTextureToStoneMenuButton(stoneType)
 	Necrosis_UseItem(stoneType, button)
 end
 

@@ -22,6 +22,7 @@ This is fork of version 1.5.2a of the Necrosis LdC addon for Turtle WoW server.
 #### Bug fixes
 
 - Added Mechanical creature type to the Anti-Fear immunity list (they are fully immune to fear).
+- Fixed the stone menu button showing the previous stone's icon on hover when a different stone was clicked while the menu was still open.
 
 #### Requirements
 
