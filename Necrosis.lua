@@ -326,6 +326,10 @@ local BagIsSoulPouch = { nil, nil, nil, nil, nil }
 local BagUpdatePending = false
 local BagUpdateTime = 0
 
+-- Throttle timestamps for OnUpdate subsystems (0.2s interval)
+local ShadowTranceLastCheck = 0
+local AntiFearLastCheck = 0
+
 -- Variable contenant les derniers messages invoqués
 local PetMess = 0
 local SteedMess = 0
@@ -567,8 +571,9 @@ function Necrosis_OnUpdate()
 		end
 	end
 
-	-- Gestion du talent "Crépuscule"
-	if NecrosisConfig.ShadowTranceAlert then
+	-- Shadow Trance (Nightfall) detection — throttled to every 0.2s
+	if NecrosisConfig.ShadowTranceAlert and (curTime - ShadowTranceLastCheck) >= 0.2 then
+		ShadowTranceLastCheck = curTime
 		local Actif = false
 		local TimeLeft = 0
 		Necrosis_UnitHasTrance()
