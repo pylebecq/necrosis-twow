@@ -602,8 +602,10 @@ function Necrosis_OnUpdate()
 		end
 	end
 
-	-- Gestion des Antifears
-	if NecrosisConfig.AntiFearAlert then
+	-- Anti-Fear detection and display — throttled to every 0.2s
+	-- Includes buff/debuff tooltip scanning (expensive) and blink animation (0.4s timer)
+	if NecrosisConfig.AntiFearAlert and (curTime - AntiFearLastCheck) >= 0.2 then
+		AntiFearLastCheck = curTime
 		local Actif = false -- must be False, or a number from 1 to BuffAlert.AFImageType[] max element.
 
 		-- Checking if we have a target. Any fear need a target to be casted on
@@ -618,7 +620,7 @@ function Necrosis_OnUpdate()
 				end
 			end
 
-			-- We'll start to parse the target buffs, as his class doesn't give him natural permanent immunity
+			-- Parse the target buffs, as his class doesn't give him natural permanent immunity
 			if not Actif then
 				for index = 1, table.getn(NECROSIS_ANTI_FEAR_SPELL.Buff), 1 do
 					if Necrosis_UnitHasBuff("target", NECROSIS_ANTI_FEAR_SPELL.Buff[index]) then
@@ -628,15 +630,17 @@ function Necrosis_OnUpdate()
 				end
 
 				-- No buff found, let's try the debuffs
-				for index = 1, table.getn(NECROSIS_ANTI_FEAR_SPELL.Debuff), 1 do
-					if Necrosis_UnitHasEffect("target", NECROSIS_ANTI_FEAR_SPELL.Debuff[index]) then
-						Actif = 3 -- Prot
-						break
+				if not Actif then
+					for index = 1, table.getn(NECROSIS_ANTI_FEAR_SPELL.Debuff), 1 do
+						if Necrosis_UnitHasEffect("target", NECROSIS_ANTI_FEAR_SPELL.Debuff[index]) then
+							Actif = 3 -- Prot
+							break
+						end
 					end
 				end
 			end
 
-			-- an immunity has been detected before, but we still don't know why => show the button anyway
+			-- An immunity has been detected before, but we still don't know why => show the button anyway
 			if BuffAlert.AFCurrentTargetImmune and not Actif then
 				Actif = 1
 			end
