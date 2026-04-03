@@ -44,6 +44,7 @@ NECROSIS_ANTI_FEAR_SPELL = {
 -- Creature type absolutly immune to fear effects
 NECROSIS_ANTI_FEAR_UNIT = {
 	"Undead",
+	"Mechanical",
 }
 
 -- Word to search for spell immunity. First (.+) replace the spell's name, 2nd (.+) replace the creature's name

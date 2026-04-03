@@ -19,6 +19,10 @@ This is fork of version 1.5.2a of the Necrosis LdC addon for Turtle WoW server.
 - Throttled Shadow Trance (Nightfall) detection from every frame to every 0.2 seconds.
 - Throttled Anti-Fear detection (buff/debuff tooltip scanning) from every frame to every 0.2 seconds.
 
+#### Bug fixes
+
+- Added Mechanical creature type to the Anti-Fear immunity list (they are fully immune to fear).
+
 #### Requirements
 
 - Necrosis now requires nampower >= v4.1.3. The addon will display an error message and refuse to load if nampower is missing or too old.
