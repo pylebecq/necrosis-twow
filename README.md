@@ -18,6 +18,7 @@ This is fork of version 1.5.2a of the Necrosis LdC addon for Turtle WoW server.
 - Fixed the OnUpdate guard condition which allowed the entire update body to run before initialization was complete.
 - Throttled Shadow Trance (Nightfall) detection from every frame to every 0.2 seconds.
 - Throttled Anti-Fear detection (buff/debuff tooltip scanning) from every frame to every 0.2 seconds.
+- Removed redundant per-frame work from OnUpdate: spell timer button visibility check, shard count text clearing, and an extra `GetTime()` call.
 
 #### Bug fixes
 

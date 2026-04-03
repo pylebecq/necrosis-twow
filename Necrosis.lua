@@ -672,14 +672,6 @@ function Necrosis_OnUpdate()
 		end
 	end
 
-	-- Gestion du Timer des sorts
-	if not NecrosisSpellTimerButton:IsVisible() then
-		ShowUIPanel(NecrosisSpellTimerButton)
-	end
-
-	if NecrosisConfig.CountType == 3 then
-		NecrosisShardCount:SetText("")
-	end
 	local update = false
 	if (curTime - SpellCast.Time) >= 1 then
 		SpellCast.Time = curTime
@@ -706,7 +698,7 @@ function Necrosis_OnUpdate()
 			textTimersDisplay = ""
 			for index = 1, table.getn(SpellTimer), 1 do
 				if SpellTimer[index] then
-					if GetTime() <= SpellTimer[index].TimeMax then
+					if curTime <= SpellTimer[index].TimeMax then
 						-- Création de l'affichage des timers
 						textTimersDisplay, SpellGroup, GraphicalTimer, TimerTable = Necrosis_DisplayTimer(
 							textTimersDisplay,
@@ -780,7 +772,9 @@ function Necrosis_OnUpdate()
 	end
 
 	if NecrosisConfig.ShowSpellTimers or NecrosisConfig.Graphical then
-		-- Si affichage de timer texte
+		if not NecrosisSpellTimerButton:IsVisible() then
+			ShowUIPanel(NecrosisSpellTimerButton)
+		end
 		if not NecrosisConfig.Graphical then
 			-- Coloration de l'affichage des timers
 			textTimersDisplay = Necrosis_MsgAddColor(textTimersDisplay)
@@ -789,7 +783,8 @@ function Necrosis_OnUpdate()
 		else
 			NecrosisListSpells:SetText("")
 		end
-		for i = 4, table.getn(SpellGroup.Name) do
+		local spellGroupCount = table.getn(SpellGroup.Name)
+		for i = 4, spellGroupCount do
 			SpellGroup.Visible[i] = false
 		end
 	else
@@ -2128,7 +2123,7 @@ function Necrosis_BagExplore()
 			NecrosisButton:SetNormalTexture("Interface\\AddOns\\Necrosis\\UI\\Bleu\\Shard32")
 		end
 	end
-	if NecrosisConfig.ShowCount then
+	if NecrosisConfig.ShowCount and NecrosisConfig.CountType ~= 3 then
 		if NecrosisConfig.CountType == 2 then
 			NecrosisShardCount:SetText(InfernalStone .. " / " .. DemoniacStone)
 		elseif NecrosisConfig.CountType == 1 then
