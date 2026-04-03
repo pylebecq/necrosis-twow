@@ -255,9 +255,6 @@ function Necrosis_Initialize()
 			AnchorSpellTimerTooltip = "ANCHOR_RIGHT"
 		end
 
-		-- Initial bag scan to find all items and count misplaced shards
-		Necrosis_BagExplore()
-
 		-- Le Shard est-il vérouillé sur l'interface ?
 		if NecrosisConfig.NoDragAll then
 			Necrosis_NoDrag()
