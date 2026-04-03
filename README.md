@@ -15,6 +15,7 @@ This is fork of version 1.5.2a of the Necrosis LdC addon for Turtle WoW server.
 - Replaced tooltip-based bag scanning with nampower's `GetBagItems()` API for fast item ID lookups. This eliminates expensive tooltip text field manipulation on every bag change.
 - Added debouncing to bag update events: multiple rapid `BAG_UPDATE` events (e.g., from looting, vendoring, or trading) are now collapsed into a single scan after a short delay.
 - Merged the soul shard misplacement check into the main bag scan, eliminating a redundant second pass on every bag change when shard sorting is enabled.
+- Fixed the OnUpdate guard condition which allowed the entire update body to run before initialization was complete.
 
 #### Requirements
 

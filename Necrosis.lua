@@ -465,11 +465,9 @@ local textTimersDisplay = ""
 
 -- Fonction lancée à la mise à jour de l'interface (main) -- toutes les 0,1 secondes environ
 function Necrosis_OnUpdate()
-	-- La fonction n'est utilisée que si Necrosis est initialisé et le joueur un Démoniste --
-	if (not Loaded) and UnitClass("player") ~= NECROSIS_UNIT_WARLOCK then
+	if (not Loaded) or UnitClass("player") ~= NECROSIS_UNIT_WARLOCK then
 		return
 	end
-	-- La fonction n'est utilisée que si Necrosis est initialisé et le joueur un Démoniste --
 
 	local curTime = GetTime()
 
